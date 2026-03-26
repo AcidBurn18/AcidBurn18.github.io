@@ -3,119 +3,534 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DevOps Engineer Portfolio showcasing side projects and blogs.">
-    <title>Your Name | DevOps Engineer Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Ansh Agrawal is a DevOps Engineer focused on cloud infrastructure, platform engineering, automation, and portfolio-grade technical projects.">
+    <title>Ansh Agrawal | DevOps Engineer</title>
     <style>
+        :root {
+            --bg: #f4efe5;
+            --paper: rgba(255, 251, 245, 0.88);
+            --panel: rgba(255, 255, 255, 0.7);
+            --ink: #172126;
+            --muted: #55636b;
+            --line: rgba(23, 33, 38, 0.12);
+            --accent: #0f766e;
+            --accent-strong: #0b4f4a;
+            --accent-soft: #d7efe8;
+            --warm: #b45309;
+            --shadow: 0 20px 60px rgba(44, 62, 80, 0.12);
+            --radius-lg: 28px;
+            --radius-md: 18px;
+            --max: 1120px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Roboto', sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #1e1e1e;
-            color: #fff;
-            overflow-x: hidden;
+            font-family: Georgia, "Times New Roman", serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at top left, rgba(15, 118, 110, 0.16), transparent 30%),
+                radial-gradient(circle at top right, rgba(180, 83, 9, 0.14), transparent 28%),
+                linear-gradient(180deg, #fbf7ef 0%, #f3ecdf 100%);
         }
-        header {
-            background-color: #333;
-            padding: 20px 0;
-            text-align: center;
-            position: relative;
+
+        a {
+            color: inherit;
         }
-        header h1 {
-            font-size: 3em;
-            margin: 0;
-            color: #f1c40f;
-            animation: fadeIn 2s ease-in-out;
+
+        .page {
+            width: min(calc(100% - 32px), var(--max));
+            margin: 0 auto;
+            padding: 24px 0 56px;
         }
-        header p {
-            color: #bdc3c7;
-            font-size: 1.2em;
-            margin: 10px 0;
-            animation: fadeIn 2s ease-in-out 1s;
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0 28px;
         }
-        section {
-            padding: 50px 20px;
+
+        .brand {
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
         }
-        .project {
-            margin-bottom: 30px;
-            animation: slideIn 1s ease-out;
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
         }
-        .project h2 {
-            font-size: 2em;
-            color: #f1c40f;
-        }
-        .project p {
-            color: #bdc3c7;
-            font-size: 1.2em;
-        }
-        .project a {
-            color: #f1c40f;
+
+        .nav-links a {
             text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
+            color: var(--muted);
+            font-size: 0.95rem;
         }
-        .project a:hover {
-            color: #e67e22;
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.3fr 0.9fr;
+            gap: 24px;
+            align-items: stretch;
         }
-        footer {
-            background-color: #333;
-            color: #bdc3c7;
-            padding: 20px;
+
+        .hero-copy,
+        .hero-panel,
+        .section-card,
+        .project-card {
+            background: var(--paper);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-copy {
+            border-radius: var(--radius-lg);
+            padding: 40px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 14px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent-strong);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0;
+            line-height: 1.05;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 8vw, 5.7rem);
+            letter-spacing: -0.05em;
+            margin-bottom: 18px;
+        }
+
+        .hero-copy p {
+            max-width: 60ch;
+            font-size: 1.08rem;
+            line-height: 1.7;
+            color: var(--muted);
+            margin: 0 0 24px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .button,
+        .button-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            padding: 0 18px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+        }
+
+        .button {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(15, 118, 110, 0.22);
+        }
+
+        .button-secondary {
+            background: rgba(255, 255, 255, 0.68);
+            color: var(--ink);
+            border: 1px solid var(--line);
+        }
+
+        .button:hover,
+        .button-secondary:hover,
+        .project-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero-panel {
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            display: grid;
+            gap: 16px;
+        }
+
+        .stat {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .stat:last-child {
+            border-bottom: 0;
+        }
+
+        .stat-label {
+            display: block;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--warm);
+            margin-bottom: 8px;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 1.25rem;
+            margin-bottom: 6px;
+        }
+
+        .stat p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .sections {
+            display: grid;
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .section-card {
+            border-radius: var(--radius-lg);
+            padding: 32px;
+        }
+
+        .section-title {
+            font-size: clamp(1.9rem, 3vw, 2.6rem);
+            margin-bottom: 10px;
+        }
+
+        .section-intro {
+            margin: 0 0 20px;
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 70ch;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .pill {
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            color: var(--ink);
+            font-size: 0.95rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .project-card {
+            border-radius: var(--radius-md);
+            padding: 24px;
+        }
+
+        .project-card h3 {
+            font-size: 1.45rem;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            margin: 0 0 18px;
+            line-height: 1.7;
+            color: var(--muted);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            color: var(--accent-strong);
+            text-decoration: none;
+        }
+
+        .cert-list,
+        .writing-list,
+        .contact-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .item {
+            padding: 16px 18px;
+            border-radius: 16px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+        }
+
+        .item strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .item span,
+        .item a {
+            color: var(--muted);
+            line-height: 1.6;
+            text-decoration: none;
+        }
+
+        .footer {
+            padding: 28px 4px 8px;
+            color: var(--muted);
+            font-size: 0.95rem;
             text-align: center;
         }
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            animation: reveal 700ms ease forwards;
+        }
+
+        .delay-1 { animation-delay: 120ms; }
+        .delay-2 { animation-delay: 240ms; }
+        .delay-3 { animation-delay: 360ms; }
+        .delay-4 { animation-delay: 480ms; }
+
+        @keyframes reveal {
+            to {
                 opacity: 1;
+                transform: translateY(0);
             }
         }
-        @keyframes slideIn {
-            0% {
-                transform: translateX(-100%);
+
+        @media (max-width: 900px) {
+            .hero,
+            .project-grid {
+                grid-template-columns: 1fr;
             }
-            100% {
-                transform: translateX(0);
+
+            .hero-copy,
+            .hero-panel,
+            .section-card {
+                padding: 24px;
+            }
+
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .page {
+                width: min(calc(100% - 20px), var(--max));
+            }
+
+            h1 {
+                font-size: 2.7rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Your Name</h1>
-        <p>DevOps Engineer | Side Projects | Blog Writer</p>
-    </header>
+    <div class="page">
+        <nav class="nav reveal">
+            <div class="brand">Ansh Agrawal</div>
+            <div class="nav-links">
+                <a href="#projects">Projects</a>
+                <a href="#credentials">Credentials</a>
+                <a href="#writing">Writing</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
 
-    <section id="projects">
-        <div class="project">
-            <h2>Home Server Setup</h2>
-            <p>Learn how I configured my own home server to host services like Jellyfin, NextCloud, and more with Docker and CI/CD using FluxCD and ArgoCD. <a href="https://github.com/your-repo/home-server-setup" target="_blank">View Project</a></p>
-        </div>
-        <div class="project">
-            <h2>Networking Setup with Pi-hole and Unbound</h2>
-            <p>How I optimized my home network with Pi-hole for ad-blocking and Unbound for DNS. <a href="https://github.com/your-repo/networking-setup" target="_blank">View Project</a></p>
-        </div>
-        <div class="project">
-            <h2>Blog: Teck Debate</h2>
-            <p>I write about DevOps practices, automation, and my experiences. Check out my latest posts on <a href="https://medium.com/@teckdebate" target="_blank">Medium</a>.</p>
-        </div>
-    </section>
+        <header class="hero">
+            <section class="hero-copy reveal delay-1">
+                <span class="eyebrow">DevOps Engineer</span>
+                <h1>Cloud, platform, and automation work presented with clarity.</h1>
+                <p>
+                    I build infrastructure-focused projects that demonstrate practical DevOps engineering across cloud platforms,
+                    Terraform, Kubernetes, container operations, and public-safe technical documentation.
+                </p>
+                <div class="hero-actions">
+                    <a class="button" href="https://github.com/AcidBurn18" target="_blank" rel="noreferrer">View GitHub</a>
+                    <a class="button-secondary" href="https://teckdebate.medium.com/" target="_blank" rel="noreferrer">Read Medium</a>
+                </div>
+            </section>
 
-    <footer>
-        <p>&copy; 2025 Your Name. All Rights Reserved.</p>
-    </footer>
+            <aside class="hero-panel reveal delay-2">
+                <div class="stat">
+                    <span class="stat-label">Focus Areas</span>
+                    <strong>Platform Engineering</strong>
+                    <p>Terraform, Azure foundations, cloud architecture patterns, and repeatable delivery workflows.</p>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Hands-On Labs</span>
+                    <strong>Self-Hosted Operations</strong>
+                    <p>Docker Compose services, DNS, stateful workloads, and long-term homelab ownership.</p>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Technical Communication</span>
+                    <strong>Writing And Documentation</strong>
+                    <p>Medium articles, architecture explanations, and portfolio-safe engineering case studies.</p>
+                </div>
+            </aside>
+        </header>
 
-    <script>
-        // Smooth scroll on clicking links
-        document.querySelectorAll('a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+        <main class="sections">
+            <section class="section-card reveal delay-2">
+                <h2 class="section-title">Core Stack</h2>
+                <p class="section-intro">
+                    My portfolio work is centered on infrastructure automation, cloud platforms, containers, and operational clarity.
+                </p>
+                <div class="skills">
+                    <span class="pill">Terraform</span>
+                    <span class="pill">Azure</span>
+                    <span class="pill">Google Cloud</span>
+                    <span class="pill">Kubernetes</span>
+                    <span class="pill">Docker</span>
+                    <span class="pill">Jenkins</span>
+                    <span class="pill">Ansible</span>
+                    <span class="pill">Python</span>
+                    <span class="pill">Linux</span>
+                    <span class="pill">CI/CD</span>
+                </div>
+            </section>
+
+            <section class="section-card reveal delay-3" id="projects">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-intro">
+                    These projects represent how I approach cloud foundations, documentation, service operations, and public portfolio storytelling.
+                </p>
+                <div class="project-grid">
+                    <article class="project-card">
+                        <h3>Azure Landing Zone Starter</h3>
+                        <p>
+                            A public-safe case study inspired by hands-on Azure platform engineering experience, with reusable Terraform modules,
+                            architecture documentation, and an example platform composition.
+                        </p>
+                        <a class="project-link" href="https://github.com/AcidBurn18/devops-case-study" target="_blank" rel="noreferrer">View repository</a>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Home Server DevOps Lab</h3>
+                        <p>
+                            A long-running self-hosted infrastructure lab covering service-per-folder repository design, Docker Compose workloads,
+                            DNS components, and maintainable operational structure.
+                        </p>
+                        <a class="project-link" href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">View repository</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section-card reveal delay-3" id="credentials">
+                <h2 class="section-title">Credentials</h2>
+                <p class="section-intro">
+                    Certifications and language qualifications that support both technical capability and professional communication.
+                </p>
+                <div class="cert-list">
+                    <div class="item">
+                        <strong>Microsoft Azure Administrator Associate (AZ-104)</strong>
+                        <a href="https://www.credential.net/dc4245f0-9c17-427d-b085-61b505ac7ddd" target="_blank" rel="noreferrer">View credential record</a>
+                    </div>
+                    <div class="item">
+                        <strong>Google Cloud Professional DevOps Engineer</strong>
+                        <a href="https://www.credential.net/309f4179-f9ab-4a34-bcad-7b3ab9854091" target="_blank" rel="noreferrer">View credential record</a>
+                    </div>
+                    <div class="item">
+                        <strong>Google Cloud Associate Cloud Engineer</strong>
+                        <span>Completed and included as part of my professional cloud learning portfolio.</span>
+                    </div>
+                    <div class="item">
+                        <strong>IELTS C1 Band</strong>
+                        <span>Demonstrates advanced English communication proficiency.</span>
+                    </div>
+                    <div class="item">
+                        <strong>Goethe German A1</strong>
+                        <span>Foundational German language qualification.</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-card reveal delay-4" id="writing">
+                <h2 class="section-title">Writing And Publication</h2>
+                <p class="section-intro">
+                    I use writing to make infrastructure work easier to understand, whether that is cloud automation, homelab operations, or platform design.
+                </p>
+                <div class="writing-list">
+                    <div class="item">
+                        <strong>Medium Publication</strong>
+                        <a href="https://teckdebate.medium.com/" target="_blank" rel="noreferrer">teckdebate.medium.com</a>
+                    </div>
+                    <div class="item">
+                        <strong>Build a Self-Updating Media Library: qBittorrent to Jellyfin Automation</strong>
+                        <a href="https://teckdebate.medium.com/build-a-self-updating-media-library-qbittorrent-to-jellyfin-automation-3978b0d25938" target="_blank" rel="noreferrer">Read article</a>
+                    </div>
+                    <div class="item">
+                        <strong>Terraform Docs Tutorial: Generate READMEs for Your Modules</strong>
+                        <a href="https://teckdebate.medium.com/terraform-docs-tutorial-generate-readmes-for-your-modules-412597aa351a" target="_blank" rel="noreferrer">Read article</a>
+                    </div>
+                    <div class="item">
+                        <strong>Cross-Subscription VNet Peering in Azure with Terraform</strong>
+                        <a href="https://teckdebate.medium.com/cross-peering-power-terraform-azurermrm-unleashed-62a9839f45fd" target="_blank" rel="noreferrer">Read article</a>
+                    </div>
+                    <div class="item">
+                        <strong>Research Paper</strong>
+                        <a href="https://www.ijsdr.org/papers/IJSDR2303026.pdf" target="_blank" rel="noreferrer">Analysing Mental Health Using Twitter by Sentimental Analysis</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-card reveal delay-4" id="contact">
+                <h2 class="section-title">Contact</h2>
+                <p class="section-intro">
+                    If you are reviewing my work for a role, collaboration, or technical discussion, these are the best places to reach me and review more of my work.
+                </p>
+                <div class="contact-list">
+                    <div class="item">
+                        <strong>GitHub</strong>
+                        <a href="https://github.com/AcidBurn18" target="_blank" rel="noreferrer">github.com/AcidBurn18</a>
+                    </div>
+                    <div class="item">
+                        <strong>LinkedIn</strong>
+                        <a href="https://in.linkedin.com/in/gotoansh" target="_blank" rel="noreferrer">linkedin.com/in/gotoansh</a>
+                    </div>
+                    <div class="item">
+                        <strong>Medium</strong>
+                        <a href="https://teckdebate.medium.com/" target="_blank" rel="noreferrer">teckdebate.medium.com</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer reveal delay-4">
+            <p>Portfolio site for Ansh Agrawal.</p>
+        </footer>
+    </div>
 </body>
 </html>
