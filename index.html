@@ -833,44 +833,9 @@
             <section id="projects" class="section-card reveal delay-3">
                 <div class="section-kicker">Projects</div>
                 <div class="section-head">
-                    <h2 class="section-title">Featured work organized by problem space.</h2>
+                    <h2 class="section-title">Featured work led by homelab and platform operations.</h2>
                 </div>
                 <div class="project-grid">
-                    <article class="project-card featured">
-                        <header>
-                            <div>
-                                <span class="label">Cloud infrastructure</span>
-                                <h3>Azure Landing Zone Starter</h3>
-                            </div>
-                            <div class="project-meta">Featured</div>
-                        </header>
-                        <p>
-                            Public-safe Azure platform work that demonstrates how I think about landing zones without exposing internal company details.
-                        </p>
-                        <div class="project-specs">
-                            <div class="spec-line">
-                                <strong>Problem</strong>
-                                <span>Show a cloud foundation design in a way that is useful, credible, and safe to publish.</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Tech</strong>
-                                <span>Azure, Terraform, reusable modules, architecture documentation, platform composition.</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Architecture</strong>
-                                <span>Module-driven foundation, documented network boundaries, and a public-safe example of platform setup.</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Decisions</strong>
-                                <span>Keep it opinionated enough to be useful, but generic enough to avoid fake enterprise claims.</span>
-                            </div>
-                        </div>
-                        <div class="card-links">
-                            <a href="https://github.com/AcidBurn18/devops-case-study" target="_blank" rel="noreferrer">GitHub</a>
-                            <a href="https://teckdebate.medium.com/cross-peering-power-terraform-azurermrm-unleashed-62a9839f45fd" target="_blank" rel="noreferrer">Related reading</a>
-                        </div>
-                    </article>
-
                     <article class="project-card featured">
                         <header>
                             <div>
@@ -903,6 +868,41 @@
                         <div class="card-links">
                             <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub</a>
                             <a href="https://teckdebate.medium.com/traefik-done-properly-in-a-homelab-nextcloud-home-assistant-reverse-porxy-e41bafbbbcb9" target="_blank" rel="noreferrer">Related reading</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card featured">
+                        <header>
+                            <div>
+                                <span class="label">Cloud infrastructure</span>
+                                <h3>Azure Landing Zone Foundations</h3>
+                            </div>
+                            <div class="project-meta">Secondary</div>
+                        </header>
+                        <p>
+                            A supporting public-safe Azure example. Useful as a code signal, but intentionally secondary to the homelab story until the repository is more complete.
+                        </p>
+                        <div class="project-specs">
+                            <div class="spec-line">
+                                <strong>Problem</strong>
+                                <span>Present landing zone thinking without overstating the amount of finished public code available today.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Tech</strong>
+                                <span>Azure, Terraform, reusable modules, architecture documentation, platform composition.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Architecture</strong>
+                                <span>Module-driven foundation and documented boundaries, treated as supporting evidence rather than the center of the portfolio.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Decisions</strong>
+                                <span>Keep it honest: strong enough to show platform thinking, not framed as finished enterprise delivery.</span>
+                            </div>
+                        </div>
+                        <div class="card-links">
+                            <a href="https://github.com/AcidBurn18/devops-case-study" target="_blank" rel="noreferrer">GitHub</a>
+                            <a href="https://teckdebate.medium.com/cross-peering-power-terraform-azurermrm-unleashed-62a9839f45fd" target="_blank" rel="noreferrer">Related reading</a>
                         </div>
                     </article>
 
@@ -1150,16 +1150,16 @@
             <section id="github" class="section-card reveal delay-4">
                 <div class="section-kicker">GitHub</div>
                 <div class="section-head">
-                    <h2 class="section-title">Selected public repositories and contribution themes.</h2>
+                    <h2 class="section-title">Public GitHub supports the story; the homelab is the stronger proof.</h2>
                 </div>
                 <div class="summary-layout">
                     <div class="summary-copy">
                         <p>
                             Public work spans cloud foundations, self-hosted infrastructure, security documentation, and Terraform-related tooling.
-                            Some repositories are intentionally lightweight or experimental, so the portfolio treats them as proof of approach rather than completed products.
+                            The most credible signal is the pattern across the repos rather than any one showcased project.
                         </p>
                         <p>
-                            The useful pattern across the public repos is consistent: build the platform, document the reasoning, and keep the repo easy to review.
+                            This portfolio keeps GitHub in the background so the platform and homelab work can lead the narrative.
                         </p>
                     </div>
                     <div class="mini-grid">
@@ -1171,218 +1171,28 @@
                         <div class="mini-card">
                             <span class="label">Recent public work</span>
                             <h3>Homelab and security tooling</h3>
-                            <p>Recently updated repos include homeserver_public, scd-agent, and homelab-mover.</p>
+                            <p>Public repos continue to reinforce the same engineering identity without needing a curated repo wall.</p>
                         </div>
                         <div class="mini-card">
                             <span class="label">Profile signal</span>
-                            <h3>Public footprint</h3>
-                            <p>GitHub profile, Medium publication, and project repos all reinforce the same engineering identity.</p>
+                            <h3>Consistent operator mindset</h3>
+                            <p>Build the platform, document the reasoning, and keep the repo easy to review.</p>
                         </div>
                     </div>
-                </div>
-                <div class="repo-grid" style="margin-top: 18px;">
-                    <article class="repo-card">
-                        <header>
-                            <div>
-                                <span class="label">Pinned-style repo</span>
-                                <h3>homeserver_public</h3>
-                            </div>
-                            <div class="repo-meta">Self-hosted DevOps home lab</div>
-                        </header>
-                        <p>Docker-based infrastructure running multiple services with a focus on networking and system design.</p>
-                        <div class="card-links">
-                            <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">Open repo</a>
-                        </div>
-                    </article>
-                    <article class="repo-card">
-                        <header>
-                            <div>
-                                <span class="label">Pinned-style repo</span>
-                                <h3>devops-case-study</h3>
-                            </div>
-                            <div class="repo-meta">Azure landing zone work</div>
-                        </header>
-                        <p>Public-safe Azure platform case study with Terraform modules and architecture documentation.</p>
-                        <div class="card-links">
-                            <a href="https://github.com/AcidBurn18/devops-case-study" target="_blank" rel="noreferrer">Open repo</a>
-                        </div>
-                    </article>
-                    <article class="repo-card">
-                        <header>
-                            <div>
-                                <span class="label">Pinned-style repo</span>
-                                <h3>scd-agent</h3>
-                            </div>
-                            <div class="repo-meta">Security document automation</div>
-                        </header>
-                        <p>Security Control Document generation for Azure cloud services using Azure AI Foundry.</p>
-                        <div class="card-links">
-                            <a href="https://github.com/AcidBurn18/scd-agent" target="_blank" rel="noreferrer">Open repo</a>
-                        </div>
-                    </article>
-                    <article class="repo-card">
-                        <header>
-                            <div>
-                                <span class="label">Pinned-style repo</span>
-                                <h3>Terraform</h3>
-                            </div>
-                            <div class="repo-meta">Terraform-related codes and documents</div>
-                        </header>
-                        <p>Infrastructure-as-code material that supports the documentation-first story in the portfolio.</p>
-                        <div class="card-links">
-                            <a href="https://github.com/AcidBurn18/Terraform" target="_blank" rel="noreferrer">Open repo</a>
-                        </div>
-                    </article>
-                    <article class="repo-card">
-                        <header>
-                            <div>
-                                <span class="label">Recent update</span>
-                                <h3>homelab-mover</h3>
-                            </div>
-                            <div class="repo-meta">Homelab file mover automation</div>
-                        </header>
-                        <p>A small automation repo that reinforces the practical operations side of the public footprint.</p>
-                        <div class="card-links">
-                            <a href="https://github.com/AcidBurn18/homelab-mover" target="_blank" rel="noreferrer">Open repo</a>
-                        </div>
-                    </article>
-                    <article class="repo-card">
-                        <header>
-                            <div>
-                                <span class="label">Recent update</span>
-                                <h3>security-documents</h3>
-                            </div>
-                            <div class="repo-meta">Cloud security collateral</div>
-                        </header>
-                        <p>Supporting material for cloud security documents and governance-oriented workflow.</p>
-                        <div class="card-links">
-                            <a href="https://github.com/AcidBurn18/security-documents" target="_blank" rel="noreferrer">Open repo</a>
-                        </div>
-                    </article>
                 </div>
             </section>
 
             <section id="certifications" class="section-card reveal delay-5">
                 <div class="section-kicker">Certifications</div>
                 <div class="section-head">
-                    <h2 class="section-title">Credential presentation with verification links.</h2>
+                    <h2 class="section-title">Credentials, kept simple.</h2>
                 </div>
-                <div class="cert-grid">
-                    <article class="cert-card">
-                        <header>
-                            <div>
-                                <span class="label">Microsoft</span>
-                                <h3>Azure Administrator Associate (AZ-104)</h3>
-                            </div>
-                            <div class="cert-meta">Year not publicly listed</div>
-                        </header>
-                        <div class="cert-specs">
-                            <div class="spec-line">
-                                <strong>Provider</strong>
-                                <span>Microsoft</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Credential</strong>
-                                <span>Azure Administrator Associate (AZ-104)</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Verification</strong>
-                                <span><a href="https://www.credential.net/dc4245f0-9c17-427d-b085-61b505ac7ddd" target="_blank" rel="noreferrer">Credential record</a></span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="cert-card">
-                        <header>
-                            <div>
-                                <span class="label">Google Cloud</span>
-                                <h3>Professional DevOps Engineer</h3>
-                            </div>
-                            <div class="cert-meta">Year not publicly listed</div>
-                        </header>
-                        <div class="cert-specs">
-                            <div class="spec-line">
-                                <strong>Provider</strong>
-                                <span>Google Cloud</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Credential</strong>
-                                <span>Professional DevOps Engineer</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Verification</strong>
-                                <span><a href="https://www.credential.net/309f4179-f9ab-4a34-bcad-7b3ab9854091" target="_blank" rel="noreferrer">Credential record</a></span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="cert-card">
-                        <header>
-                            <div>
-                                <span class="label">Google Cloud</span>
-                                <h3>Associate Cloud Engineer</h3>
-                            </div>
-                            <div class="cert-meta">Public verification link not listed</div>
-                        </header>
-                        <div class="cert-specs">
-                            <div class="spec-line">
-                                <strong>Provider</strong>
-                                <span>Google Cloud</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Credential</strong>
-                                <span>Associate Cloud Engineer</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Verification</strong>
-                                <span>Listed in the public profile; verification link not shared on the page.</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="cert-card">
-                        <header>
-                            <div>
-                                <span class="label">Languages</span>
-                                <h3>IELTS C1 Band</h3>
-                            </div>
-                            <div class="cert-meta">Public verification link not listed</div>
-                        </header>
-                        <div class="cert-specs">
-                            <div class="spec-line">
-                                <strong>Provider</strong>
-                                <span>IELTS</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Credential</strong>
-                                <span>C1 band</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Verification</strong>
-                                <span>Included as part of the public learning profile.</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="cert-card">
-                        <header>
-                            <div>
-                                <span class="label">Languages</span>
-                                <h3>Goethe German A1</h3>
-                            </div>
-                            <div class="cert-meta">Public verification link not listed</div>
-                        </header>
-                        <div class="cert-specs">
-                            <div class="spec-line">
-                                <strong>Provider</strong>
-                                <span>Goethe-Institut</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Credential</strong>
-                                <span>German A1</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Verification</strong>
-                                <span>Included as part of the public learning profile.</span>
-                            </div>
-                        </div>
-                    </article>
+                <div class="pill-row" aria-label="Certifications">
+                    <span class="pill">Microsoft Azure Administrator Associate (AZ-104)</span>
+                    <span class="pill">Google Cloud Professional DevOps Engineer</span>
+                    <span class="pill">Google Cloud Associate Cloud Engineer</span>
+                    <span class="pill">IELTS C1 Band</span>
+                    <span class="pill">Goethe German A1</span>
                 </div>
             </section>
 
