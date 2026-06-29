@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ansh Agrawal is a DevOps Engineer focused on cloud infrastructure, platform engineering, automation, and portfolio-grade technical projects.">
-    <title>Ansh Agrawal | DevOps Engineer</title>
+    <meta name="description" content="Ansh Agrawal is a Platform Engineer focused on cloud infrastructure, Kubernetes, Azure landing zones, infrastructure as code, GitOps, and self-hosted platforms.">
+    <meta name="theme-color" content="#f4efe5">
+    <title>Ansh Agrawal | Platform Engineer</title>
     <style>
         :root {
             --bg: #f4efe5;
-            --paper: rgba(255, 251, 245, 0.88);
-            --panel: rgba(255, 255, 255, 0.7);
+            --bg-alt: #efe6d8;
+            --paper: rgba(255, 251, 245, 0.9);
+            --paper-strong: rgba(255, 255, 255, 0.74);
             --ink: #172126;
             --muted: #55636b;
             --line: rgba(23, 33, 38, 0.12);
@@ -17,10 +19,14 @@
             --accent-strong: #0b4f4a;
             --accent-soft: #d7efe8;
             --warm: #b45309;
+            --warm-soft: #f8e7cd;
             --shadow: 0 20px 60px rgba(44, 62, 80, 0.12);
-            --radius-lg: 28px;
+            --shadow-soft: 0 12px 32px rgba(44, 62, 80, 0.08);
+            --radius-xl: 30px;
+            --radius-lg: 24px;
             --radius-md: 18px;
-            --max: 1120px;
+            --radius-sm: 14px;
+            --max: 1180px;
         }
 
         * {
@@ -33,11 +39,11 @@
 
         body {
             margin: 0;
-            font-family: Georgia, "Times New Roman", serif;
             color: var(--ink);
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             background:
-                radial-gradient(circle at top left, rgba(15, 118, 110, 0.16), transparent 30%),
-                radial-gradient(circle at top right, rgba(180, 83, 9, 0.14), transparent 28%),
+                radial-gradient(circle at top left, rgba(15, 118, 110, 0.14), transparent 28%),
+                radial-gradient(circle at top right, rgba(180, 83, 9, 0.12), transparent 24%),
                 linear-gradient(180deg, #fbf7ef 0%, #f3ecdf 100%);
         }
 
@@ -45,30 +51,62 @@
             color: inherit;
         }
 
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: 16px;
+            z-index: 999;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: #fff;
+            color: var(--ink);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .skip-link:focus {
+            left: 16px;
+        }
+
         .page {
             width: min(calc(100% - 32px), var(--max));
             margin: 0 auto;
-            padding: 24px 0 56px;
+            padding: 22px 0 60px;
         }
 
-        .nav {
+        .topbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 16px;
-            padding: 16px 0 28px;
+            padding: 10px 0 26px;
         }
 
         .brand {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .brand strong {
             font-size: 0.95rem;
-            font-weight: 700;
-            letter-spacing: 0.16em;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
+        }
+
+        .brand span {
+            color: var(--muted);
+            font-size: 0.94rem;
         }
 
         .nav-links {
             display: flex;
             flex-wrap: wrap;
+            justify-content: flex-end;
             gap: 14px;
         }
 
@@ -76,62 +114,81 @@
             text-decoration: none;
             color: var(--muted);
             font-size: 0.95rem;
+            padding: 8px 10px;
+            border-radius: 999px;
+            transition: background 180ms ease, color 180ms ease, transform 180ms ease;
         }
 
-        .hero {
-            display: grid;
-            grid-template-columns: 1.3fr 0.9fr;
-            gap: 24px;
-            align-items: stretch;
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--ink);
+            transform: translateY(-1px);
+            outline: none;
         }
 
-        .hero-copy,
-        .hero-panel,
-        .section-card,
-        .project-card {
+        .hero,
+        .section-card {
             background: var(--paper);
             backdrop-filter: blur(12px);
             border: 1px solid var(--line);
             box-shadow: var(--shadow);
         }
 
-        .hero-copy {
-            border-radius: var(--radius-lg);
-            padding: 40px;
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+            gap: 22px;
+            border-radius: var(--radius-xl);
+            padding: 36px;
+            align-items: stretch;
         }
 
         .eyebrow {
-            display: inline-block;
-            margin-bottom: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
             padding: 8px 12px;
             border-radius: 999px;
             background: var(--accent-soft);
             color: var(--accent-strong);
             font-size: 0.8rem;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: 0.08em;
             text-transform: uppercase;
         }
 
+        .eyebrow::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: var(--accent);
+        }
+
         h1,
         h2,
-        h3 {
+        h3,
+        h4,
+        p {
             margin: 0;
-            line-height: 1.05;
         }
 
         h1 {
-            font-size: clamp(2.8rem, 8vw, 5.7rem);
+            font-size: clamp(2.7rem, 6vw, 5.5rem);
+            line-height: 0.95;
             letter-spacing: -0.05em;
             margin-bottom: 18px;
+            max-width: 11ch;
         }
 
         .hero-copy p {
-            max-width: 60ch;
-            font-size: 1.08rem;
-            line-height: 1.7;
+            max-width: 66ch;
             color: var(--muted);
-            margin: 0 0 24px;
+            font-size: 1.07rem;
+            line-height: 1.75;
+            margin-bottom: 24px;
         }
 
         .hero-actions {
@@ -141,7 +198,8 @@
         }
 
         .button,
-        .button-secondary {
+        .button-secondary,
+        .inline-link {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -150,7 +208,7 @@
             border-radius: 999px;
             text-decoration: none;
             font-weight: 700;
-            transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+            transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, color 180ms ease;
         }
 
         .button {
@@ -159,53 +217,78 @@
             box-shadow: 0 10px 30px rgba(15, 118, 110, 0.22);
         }
 
-        .button-secondary {
-            background: rgba(255, 255, 255, 0.68);
+        .button-secondary,
+        .inline-link {
+            background: rgba(255, 255, 255, 0.7);
             color: var(--ink);
             border: 1px solid var(--line);
         }
 
         .button:hover,
         .button-secondary:hover,
-        .project-link:hover {
+        .inline-link:hover,
+        .button:focus-visible,
+        .button-secondary:focus-visible,
+        .inline-link:focus-visible {
             transform: translateY(-2px);
+            outline: none;
         }
 
         .hero-panel {
             border-radius: var(--radius-lg);
-            padding: 28px;
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid var(--line);
             display: grid;
-            gap: 16px;
+            gap: 14px;
         }
 
-        .stat {
-            padding: 18px 0;
+        .hero-stat {
+            padding: 16px 0;
             border-bottom: 1px solid var(--line);
         }
 
-        .stat:last-child {
+        .hero-stat:last-child {
             border-bottom: 0;
+            padding-bottom: 2px;
         }
 
         .stat-label {
-            display: block;
-            font-size: 0.82rem;
+            display: inline-block;
+            margin-bottom: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: var(--warm-soft);
+            color: #8f5205;
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--warm);
+        }
+
+        .hero-stat strong,
+        .mini-card h3,
+        .project-card h3,
+        .article-card h3,
+        .repo-card h3,
+        .cert-card h3 {
+            display: block;
+            font-size: 1.18rem;
+            line-height: 1.2;
             margin-bottom: 8px;
         }
 
-        .stat strong {
-            display: block;
-            font-size: 1.25rem;
-            margin-bottom: 6px;
-        }
-
-        .stat p {
-            margin: 0;
+        .hero-stat p,
+        .mini-card p,
+        .project-card p,
+        .article-card p,
+        .repo-card p,
+        .cert-card p,
+        .section-intro,
+        .summary-copy p,
+        .contact-copy p {
             color: var(--muted);
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         .sections {
@@ -215,99 +298,303 @@
         }
 
         .section-card {
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-xl);
             padding: 32px;
         }
 
-        .section-title {
-            font-size: clamp(1.9rem, 3vw, 2.6rem);
+        .section-head {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: end;
+            margin-bottom: 18px;
+        }
+
+        .section-kicker {
+            color: var(--warm);
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
             margin-bottom: 10px;
         }
 
-        .section-intro {
-            margin: 0 0 20px;
-            color: var(--muted);
-            line-height: 1.7;
-            max-width: 70ch;
+        .section-title {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            letter-spacing: -0.03em;
         }
 
-        .skills {
+        .section-intro,
+        .summary-copy p,
+        .contact-copy p {
+            max-width: 76ch;
+            margin-top: 8px;
+        }
+
+        .summary-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+            gap: 18px;
+            align-items: start;
+        }
+
+        .summary-copy {
+            display: grid;
+            gap: 14px;
+        }
+
+        .summary-copy p {
+            font-size: 1.03rem;
+        }
+
+        .theme-grid,
+        .skill-groups,
+        .project-grid,
+        .article-grid,
+        .repo-grid,
+        .cert-grid,
+        .mini-grid,
+        .contact-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .theme-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .mini-card,
+        .project-card,
+        .article-card,
+        .repo-card,
+        .cert-card {
+            background: var(--paper-strong);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .mini-card {
+            padding: 18px;
+        }
+
+        .mini-card .label,
+        .project-card .label,
+        .article-card .label,
+        .repo-card .label,
+        .cert-card .label {
+            display: inline-flex;
+            width: fit-content;
+            margin-bottom: 10px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent-strong);
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .pill {
+            padding: 10px 13px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid var(--line);
+            color: var(--ink);
+            font-size: 0.94rem;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .mini-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 14px;
+        }
+
+        .project-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .article-grid,
+        .repo-grid,
+        .cert-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .project-card,
+        .article-card,
+        .repo-card,
+        .cert-card {
+            padding: 22px;
+        }
+
+        .project-card.featured {
+            grid-column: span 2;
+        }
+
+        .project-card header,
+        .article-card header,
+        .repo-card header,
+        .cert-card header {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: flex-start;
+            margin-bottom: 14px;
+        }
+
+        .project-meta,
+        .article-meta,
+        .repo-meta,
+        .cert-meta {
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+
+        .project-specs,
+        .article-specs,
+        .repo-specs,
+        .cert-specs {
+            display: grid;
+            gap: 10px;
+            margin: 16px 0 18px;
+        }
+
+        .spec-line {
+            display: grid;
+            grid-template-columns: 124px minmax(0, 1fr);
+            gap: 12px;
+            align-items: start;
+        }
+
+        .spec-line strong {
+            font-size: 0.84rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--warm);
+            padding-top: 2px;
+        }
+
+        .spec-line span,
+        .spec-line p {
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .card-links {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
 
-        .pill {
-            padding: 10px 14px;
+        .card-links a {
+            padding: 9px 12px;
             border-radius: 999px;
-            background: var(--panel);
+            text-decoration: none;
             border: 1px solid var(--line);
-            color: var(--ink);
-            font-size: 0.95rem;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        .project-card {
-            border-radius: var(--radius-md);
-            padding: 24px;
-        }
-
-        .project-card h3 {
-            font-size: 1.45rem;
-            margin-bottom: 12px;
-        }
-
-        .project-card p {
-            margin: 0 0 18px;
-            line-height: 1.7;
-            color: var(--muted);
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            background: rgba(255, 255, 255, 0.7);
             font-weight: 700;
-            color: var(--accent-strong);
-            text-decoration: none;
+            color: var(--ink);
+            transition: transform 180ms ease, background 180ms ease;
         }
 
-        .cert-list,
-        .writing-list,
-        .contact-list {
+        .card-links a:hover,
+        .card-links a:focus-visible {
+            transform: translateY(-1px);
+            outline: none;
+            background: #fff;
+        }
+
+        .skill-groups {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .skill-group {
+            padding: 18px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.64);
+        }
+
+        .skill-group h3 {
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: var(--line);
+            margin: 2px 0 0;
+        }
+
+        .contact-layout {
             display: grid;
-            gap: 12px;
+            grid-template-columns: minmax(0, 0.9fr) minmax(300px, 1.1fr);
+            gap: 18px;
+            align-items: start;
         }
 
-        .item {
-            padding: 16px 18px;
-            border-radius: 16px;
-            background: var(--panel);
+        .contact-cta {
+            padding: 22px;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(180deg, rgba(15, 118, 110, 0.12), rgba(15, 118, 110, 0.04));
+            border: 1px solid rgba(15, 118, 110, 0.16);
+        }
+
+        .contact-cta h3 {
+            font-size: 1.45rem;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .contact-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .contact-card {
+            padding: 18px;
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.72);
             border: 1px solid var(--line);
         }
 
-        .item strong {
+        .contact-card strong {
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
-        .item span,
-        .item a {
+        .contact-card span,
+        .contact-card a {
             color: var(--muted);
-            line-height: 1.6;
             text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .contact-card a:hover,
+        .contact-card a:focus-visible {
+            color: var(--ink);
+            outline: none;
         }
 
         .footer {
             padding: 28px 4px 8px;
-            color: var(--muted);
-            font-size: 0.95rem;
             text-align: center;
+            color: var(--muted);
+            font-size: 0.94rem;
         }
 
         .reveal {
@@ -320,6 +607,7 @@
         .delay-2 { animation-delay: 240ms; }
         .delay-3 { animation-delay: 360ms; }
         .delay-4 { animation-delay: 480ms; }
+        .delay-5 { animation-delay: 600ms; }
 
         @keyframes reveal {
             to {
@@ -328,54 +616,105 @@
             }
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
             .hero,
-            .project-grid {
+            .summary-layout,
+            .contact-layout {
                 grid-template-columns: 1fr;
             }
 
-            .hero-copy,
-            .hero-panel,
-            .section-card {
-                padding: 24px;
+            .experience-grid,
+            .project-grid,
+            .article-grid,
+            .repo-grid,
+            .cert-grid,
+            .skill-groups,
+            .contact-grid,
+            .theme-grid {
+                grid-template-columns: 1fr;
             }
 
-            .nav {
-                flex-direction: column;
-                align-items: flex-start;
+            .project-card.featured {
+                grid-column: span 1;
+            }
+
+            .mini-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        @media (max-width: 520px) {
+        @media (max-width: 640px) {
             .page {
-                width: min(calc(100% - 20px), var(--max));
+                width: min(calc(100% - 18px), var(--max));
+            }
+
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                justify-content: flex-start;
+            }
+
+            .hero,
+            .section-card {
+                padding: 22px;
             }
 
             h1 {
-                font-size: 2.7rem;
+                font-size: 2.8rem;
+            }
+
+            .spec-line {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
             }
         }
     </style>
 </head>
 <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
     <div class="page">
-        <nav class="nav reveal">
-            <div class="brand">Ansh Agrawal</div>
-            <div class="nav-links">
+        <nav class="topbar reveal">
+            <div class="brand">
+                <strong>Ansh Agrawal</strong>
+                <span>Platform Engineer • Cloud Infrastructure • Self-Hosted Systems</span>
+            </div>
+            <div class="nav-links" aria-label="Primary navigation">
+                <a href="#summary">Summary</a>
+                <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
-                <a href="#credentials">Credentials</a>
+                <a href="#skills">Skills</a>
                 <a href="#writing">Writing</a>
+                <a href="#github">GitHub</a>
+                <a href="#certifications">Certifications</a>
                 <a href="#contact">Contact</a>
             </div>
         </nav>
 
-        <header class="hero">
-            <section class="hero-copy reveal delay-1">
-                <span class="eyebrow">DevOps Engineer</span>
-                <h1>Cloud, platform, and automation work presented with clarity.</h1>
+        <header class="hero reveal delay-1">
+            <section class="hero-copy">
+                <span class="eyebrow">Platform Engineering Portfolio</span>
+                <h1>I build reliable infrastructure with Terraform, Kubernetes, GitOps, and homelab-grade discipline.</h1>
                 <p>
-                    I build infrastructure-focused projects that demonstrate practical DevOps engineering across cloud platforms,
-                    Terraform, Kubernetes, container operations, and public-safe technical documentation.
+                    I design cloud and self-hosted platforms that are repeatable, observable, and easy to operate.
+                    My work spans Azure landing zone thinking, infrastructure automation, ingress and DNS, backup design,
+                    and technical writing that explains the engineering behind it.
                 </p>
                 <div class="hero-actions">
                     <a class="button" href="https://github.com/AcidBurn18" target="_blank" rel="noreferrer">View GitHub</a>
@@ -383,152 +722,703 @@
                 </div>
             </section>
 
-            <aside class="hero-panel reveal delay-2">
-                <div class="stat">
-                    <span class="stat-label">Focus Areas</span>
+            <aside class="hero-panel" aria-label="Portfolio highlights">
+                <div class="hero-stat">
+                    <span class="stat-label">Focus</span>
                     <strong>Platform Engineering</strong>
-                    <p>Terraform, Azure foundations, cloud architecture patterns, and repeatable delivery workflows.</p>
+                    <p>Cloud foundations, infrastructure automation, Kubernetes, observability, and secure delivery patterns.</p>
                 </div>
-                <div class="stat">
-                    <span class="stat-label">Hands-On Labs</span>
-                    <strong>Self-Hosted Operations</strong>
-                    <p>Docker Compose services, DNS, stateful workloads, and long-term homelab ownership.</p>
+                <div class="hero-stat">
+                    <span class="stat-label">Proof</span>
+                    <strong>Self-Hosted / Homelab Systems</strong>
+                    <p>Ingress, DNS, backups, media automation, and runbooks built around real operational ownership.</p>
                 </div>
-                <div class="stat">
-                    <span class="stat-label">Technical Communication</span>
-                    <strong>Writing And Documentation</strong>
-                    <p>Medium articles, architecture explanations, and portfolio-safe engineering case studies.</p>
+                <div class="hero-stat">
+                    <span class="stat-label">Signal</span>
+                    <strong>Writing That Shows the Why</strong>
+                    <p>Medium articles on Traefik, Tailscale, qBittorrent to Jellyfin, DNS, CI/CD, and Terraform docs.</p>
                 </div>
             </aside>
         </header>
 
-        <main class="sections">
-            <section class="section-card reveal delay-2">
-                <h2 class="section-title">Core Stack</h2>
-                <p class="section-intro">
-                    My portfolio work is centered on infrastructure automation, cloud platforms, containers, and operational clarity.
-                </p>
-                <div class="skills">
-                    <span class="pill">Terraform</span>
-                    <span class="pill">Azure</span>
-                    <span class="pill">Google Cloud</span>
-                    <span class="pill">Kubernetes</span>
-                    <span class="pill">Docker</span>
-                    <span class="pill">Jenkins</span>
-                    <span class="pill">Ansible</span>
-                    <span class="pill">Python</span>
-                    <span class="pill">Linux</span>
-                    <span class="pill">CI/CD</span>
+        <main id="content" class="sections">
+            <section id="summary" class="section-card reveal delay-2">
+                <div class="section-kicker">Summary</div>
+                <div class="section-head">
+                    <h2 class="section-title">Engineering story, not resume copy.</h2>
+                </div>
+                <div class="summary-layout">
+                    <div class="summary-copy">
+                        <p>
+                            I work like an operator: standardize the foundation, automate the change path, keep failure domains small,
+                            and document the result so the next engineer can reason about it quickly. The public portfolio is built to
+                            show that approach through cloud infrastructure, Terraform, Kubernetes, networking, and self-hosted systems.
+                        </p>
+                        <p>
+                            The private homelab documentation reinforces the same identity with concrete runbooks for backup architecture,
+                            DNS observability, and zero-disruption ingress migration. Medium articles provide the public-facing proof by
+                            turning those same infrastructure themes into clear technical writeups.
+                        </p>
+                    </div>
+                    <div class="theme-grid" aria-label="Primary themes">
+                        <div class="mini-card">
+                            <span class="label">Cloud</span>
+                            <h3>Azure landing zones</h3>
+                            <p>Structured foundations, documented decisions, and practical platform patterns.</p>
+                        </div>
+                        <div class="mini-card">
+                            <span class="label">Automation</span>
+                            <h3>Infrastructure as code</h3>
+                            <p>Terraform, module docs, and repeatable delivery workflows.</p>
+                        </div>
+                        <div class="mini-card">
+                            <span class="label">Operations</span>
+                            <h3>Observability and backup</h3>
+                            <p>DNS telemetry, log pipelines, and disaster-recovery-first thinking.</p>
+                        </div>
+                        <div class="mini-card">
+                            <span class="label">Self-hosted</span>
+                            <h3>Real services, real ownership</h3>
+                            <p>Ingress, DNS, media automation, and long-lived platform maintenance.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <section class="section-card reveal delay-3" id="projects">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-intro">
-                    These projects represent how I approach cloud foundations, documentation, service operations, and public portfolio storytelling.
-                </p>
+            <section id="experience" class="section-card reveal delay-3">
+                <div class="section-kicker">Experience</div>
+                <div class="section-head">
+                    <h2 class="section-title">Problem → solution → impact.</h2>
+                </div>
+                <div class="experience-grid">
+                    <article class="mini-card">
+                        <span class="label">Current role</span>
+                        <h3>DevOps Engineer, HashedIn by Deloitte</h3>
+                        <div class="project-specs">
+                            <div class="spec-line">
+                                <strong>Problem</strong>
+                                <span>Infrastructure delivery needs to stay repeatable, secure, and easy to hand off across cloud and platform work.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Solution</strong>
+                                <span>Focus on cloud infrastructure, Kubernetes, automation, and documentation-first delivery patterns.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Impact</strong>
+                                <span>Creates a stronger operator mindset: cleaner change flow, clearer reasoning, and less reliance on tribal knowledge.</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="mini-card">
+                        <span class="label">Independent practice</span>
+                        <h3>Homelab and platform engineering</h3>
+                        <div class="project-specs">
+                            <div class="spec-line">
+                                <strong>Problem</strong>
+                                <span>Self-hosted platforms break down quickly when ingress, DNS, backups, and observability are treated as afterthoughts.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Solution</strong>
+                                <span>Build the lab around Traefik, step-ca, OPNsense, DNS observability, backups, and staged automation.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Impact</strong>
+                                <span>The homelab becomes a proving ground for production-grade patterns without pretending to be finished enterprise software.</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="projects" class="section-card reveal delay-3">
+                <div class="section-kicker">Projects</div>
+                <div class="section-head">
+                    <h2 class="section-title">Featured work organized by problem space.</h2>
+                </div>
                 <div class="project-grid">
-                    <article class="project-card">
-                        <h3>Azure Landing Zone Starter</h3>
+                    <article class="project-card featured">
+                        <header>
+                            <div>
+                                <span class="label">Cloud infrastructure</span>
+                                <h3>Azure Landing Zone Starter</h3>
+                            </div>
+                            <div class="project-meta">Featured</div>
+                        </header>
                         <p>
-                            A public-safe case study inspired by hands-on Azure platform engineering experience, with reusable Terraform modules,
-                            architecture documentation, and an example platform composition.
+                            Public-safe Azure platform work that demonstrates how I think about landing zones without exposing internal company details.
                         </p>
-                        <a class="project-link" href="https://github.com/AcidBurn18/devops-case-study" target="_blank" rel="noreferrer">View repository</a>
+                        <div class="project-specs">
+                            <div class="spec-line">
+                                <strong>Problem</strong>
+                                <span>Show a cloud foundation design in a way that is useful, credible, and safe to publish.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Tech</strong>
+                                <span>Azure, Terraform, reusable modules, architecture documentation, platform composition.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Architecture</strong>
+                                <span>Module-driven foundation, documented network boundaries, and a public-safe example of platform setup.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Decisions</strong>
+                                <span>Keep it opinionated enough to be useful, but generic enough to avoid fake enterprise claims.</span>
+                            </div>
+                        </div>
+                        <div class="card-links">
+                            <a href="https://github.com/AcidBurn18/devops-case-study" target="_blank" rel="noreferrer">GitHub</a>
+                            <a href="https://teckdebate.medium.com/cross-peering-power-terraform-azurermrm-unleashed-62a9839f45fd" target="_blank" rel="noreferrer">Related reading</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card featured">
+                        <header>
+                            <div>
+                                <span class="label">Self-hosted infrastructure</span>
+                                <h3>Home Server DevOps Lab</h3>
+                            </div>
+                            <div class="project-meta">Featured</div>
+                        </header>
+                        <p>
+                            A long-running home lab that acts like a small platform engineering environment: ingress, DNS, backups, observability, and service operations.
+                        </p>
+                        <div class="project-specs">
+                            <div class="spec-line">
+                                <strong>Problem</strong>
+                                <span>Self-hosted services become fragile when ingress, TLS, DNS, backup, and logging are managed independently.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Tech</strong>
+                                <span>Docker Compose, Traefik, step-ca, OPNsense, Unbound, AdGuard, Promtail, Loki, Grafana, NFS backups.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Architecture</strong>
+                                <span>Zero-disruption ingress migration, DNS observability, and platform docs that keep the lab understandable.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Decisions</strong>
+                                <span>Keep operations explicit, prefer small failure domains, and treat the homelab as a real engineering system.</span>
+                            </div>
+                        </div>
+                        <div class="card-links">
+                            <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub</a>
+                            <a href="https://teckdebate.medium.com/traefik-done-properly-in-a-homelab-nextcloud-home-assistant-reverse-porxy-e41bafbbbcb9" target="_blank" rel="noreferrer">Related reading</a>
+                        </div>
                     </article>
 
                     <article class="project-card">
-                        <h3>Home Server DevOps Lab</h3>
+                        <header>
+                            <div>
+                                <span class="label">Automation</span>
+                                <h3>Terraform Docs and IaC Hygiene</h3>
+                            </div>
+                            <div class="project-meta">Supporting</div>
+                        </header>
                         <p>
-                            A long-running self-hosted infrastructure lab covering service-per-folder repository design, Docker Compose workloads,
-                            DNS components, and maintainable operational structure.
+                            Infrastructure as code is strongest when the modules are documented as part of the delivery flow, not as an afterthought.
                         </p>
-                        <a class="project-link" href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">View repository</a>
+                        <div class="project-specs">
+                            <div class="spec-line">
+                                <strong>Problem</strong>
+                                <span>Terraform modules and supporting code drift without readable documentation and repeatable structure.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Tech</strong>
+                                <span>Terraform, markdown documentation, module READMEs, repo hygiene.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Architecture</strong>
+                                <span>Docs generated or maintained alongside code so the repository explains itself.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Decisions</strong>
+                                <span>Keep the delivery path boring, reviewable, and easy to extend.</span>
+                            </div>
+                        </div>
+                        <div class="card-links">
+                            <a href="https://github.com/AcidBurn18/Terraform" target="_blank" rel="noreferrer">GitHub</a>
+                            <a href="https://teckdebate.medium.com/terraform-docs-tutorial-generate-readmes-for-your-modules-412597aa351a" target="_blank" rel="noreferrer">Related reading</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <header>
+                            <div>
+                                <span class="label">Security / automation</span>
+                                <h3>Security Control Document Automation</h3>
+                            </div>
+                            <div class="project-meta">Supporting</div>
+                        </header>
+                        <p>
+                            A public repo that shows how I approach security documentation automation for cloud services without overclaiming enterprise maturity.
+                        </p>
+                        <div class="project-specs">
+                            <div class="spec-line">
+                                <strong>Problem</strong>
+                                <span>Security control documentation is repetitive and easy to desynchronize from the actual cloud environment.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Tech</strong>
+                                <span>Azure AI Foundry, security documents, cloud service documentation workflows.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Architecture</strong>
+                                <span>Document generation / support tooling that reduces the manual burden of writing security collateral.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Decisions</strong>
+                                <span>Use it as a proof point for automation and governance awareness, not as a finished consulting product.</span>
+                            </div>
+                        </div>
+                        <div class="card-links">
+                            <a href="https://github.com/AcidBurn18/scd-agent" target="_blank" rel="noreferrer">GitHub</a>
+                        </div>
                     </article>
                 </div>
             </section>
 
-            <section class="section-card reveal delay-3" id="credentials">
-                <h2 class="section-title">Credentials</h2>
-                <p class="section-intro">
-                    Certifications and language qualifications that support both technical capability and professional communication.
-                </p>
-                <div class="cert-list">
-                    <div class="item">
-                        <strong>Microsoft Azure Administrator Associate (AZ-104)</strong>
-                        <a href="https://www.credential.net/dc4245f0-9c17-427d-b085-61b505ac7ddd" target="_blank" rel="noreferrer">View credential record</a>
+            <section id="skills" class="section-card reveal delay-4">
+                <div class="section-kicker">Skills</div>
+                <div class="section-head">
+                    <h2 class="section-title">Grouped by capability, not badge wall.</h2>
+                </div>
+                <div class="skill-groups">
+                    <div class="skill-group">
+                        <h3>Cloud</h3>
+                        <div class="pill-row">
+                            <span class="pill">Azure</span>
+                            <span class="pill">GCP</span>
+                            <span class="pill">Landing Zones</span>
+                            <span class="pill">Cloud Foundations</span>
+                        </div>
                     </div>
-                    <div class="item">
-                        <strong>Google Cloud Professional DevOps Engineer</strong>
-                        <a href="https://www.credential.net/309f4179-f9ab-4a34-bcad-7b3ab9854091" target="_blank" rel="noreferrer">View credential record</a>
+                    <div class="skill-group">
+                        <h3>Infrastructure as Code</h3>
+                        <div class="pill-row">
+                            <span class="pill">Terraform</span>
+                            <span class="pill">Terraform Docs</span>
+                            <span class="pill">Ansible</span>
+                            <span class="pill">Markdown Runbooks</span>
+                        </div>
                     </div>
-                    <div class="item">
-                        <strong>Google Cloud Associate Cloud Engineer</strong>
-                        <span>Completed and included as part of my professional cloud learning portfolio.</span>
+                    <div class="skill-group">
+                        <h3>Containers</h3>
+                        <div class="pill-row">
+                            <span class="pill">Kubernetes</span>
+                            <span class="pill">Docker</span>
+                            <span class="pill">Docker Compose</span>
+                            <span class="pill">Container Platforms</span>
+                        </div>
                     </div>
-                    <div class="item">
-                        <strong>IELTS C1 Band</strong>
-                        <span>Demonstrates advanced English communication proficiency.</span>
+                    <div class="skill-group">
+                        <h3>GitOps / Delivery</h3>
+                        <div class="pill-row">
+                            <span class="pill">GitOps</span>
+                            <span class="pill">CI/CD</span>
+                            <span class="pill">Jenkins</span>
+                            <span class="pill">GitHub Actions</span>
+                        </div>
                     </div>
-                    <div class="item">
-                        <strong>Goethe German A1</strong>
-                        <span>Foundational German language qualification.</span>
+                    <div class="skill-group">
+                        <h3>Networking</h3>
+                        <div class="pill-row">
+                            <span class="pill">Traefik</span>
+                            <span class="pill">OPNsense</span>
+                            <span class="pill">DNS</span>
+                            <span class="pill">Tailscale</span>
+                            <span class="pill">Reverse Proxy</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Monitoring</h3>
+                        <div class="pill-row">
+                            <span class="pill">Observability</span>
+                            <span class="pill">Promtail</span>
+                            <span class="pill">Loki</span>
+                            <span class="pill">Grafana</span>
+                            <span class="pill">Prometheus</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Programming</h3>
+                        <div class="pill-row">
+                            <span class="pill">Python</span>
+                            <span class="pill">Go</span>
+                            <span class="pill">Shell</span>
+                            <span class="pill">Automation Scripts</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Operating Systems</h3>
+                        <div class="pill-row">
+                            <span class="pill">Linux</span>
+                            <span class="pill">Ubuntu</span>
+                            <span class="pill">Proxmox</span>
+                            <span class="pill">NFS / Storage Ops</span>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section class="section-card reveal delay-4" id="writing">
-                <h2 class="section-title">Writing And Publication</h2>
-                <p class="section-intro">
-                    I use writing to make infrastructure work easier to understand, whether that is cloud automation, homelab operations, or platform design.
-                </p>
-                <div class="writing-list">
-                    <div class="item">
-                        <strong>Medium Publication</strong>
-                        <a href="https://teckdebate.medium.com/" target="_blank" rel="noreferrer">teckdebate.medium.com</a>
-                    </div>
-                    <div class="item">
-                        <strong>Build a Self-Updating Media Library: qBittorrent to Jellyfin Automation</strong>
-                        <a href="https://teckdebate.medium.com/build-a-self-updating-media-library-qbittorrent-to-jellyfin-automation-3978b0d25938" target="_blank" rel="noreferrer">Read article</a>
-                    </div>
-                    <div class="item">
-                        <strong>Terraform Docs Tutorial: Generate READMEs for Your Modules</strong>
-                        <a href="https://teckdebate.medium.com/terraform-docs-tutorial-generate-readmes-for-your-modules-412597aa351a" target="_blank" rel="noreferrer">Read article</a>
-                    </div>
-                    <div class="item">
-                        <strong>Cross-Subscription VNet Peering in Azure with Terraform</strong>
-                        <a href="https://teckdebate.medium.com/cross-peering-power-terraform-azurermrm-unleashed-62a9839f45fd" target="_blank" rel="noreferrer">Read article</a>
-                    </div>
-                    <div class="item">
-                        <strong>Research Paper</strong>
-                        <a href="https://www.ijsdr.org/papers/IJSDR2303026.pdf" target="_blank" rel="noreferrer">Analysing Mental Health Using Twitter by Sentimental Analysis</a>
-                    </div>
+            <section id="writing" class="section-card reveal delay-4">
+                <div class="section-kicker">Writing</div>
+                <div class="section-head">
+                    <h2 class="section-title">Curated technical articles from Medium.</h2>
+                </div>
+                <div class="article-grid">
+                    <article class="article-card">
+                        <header>
+                            <div>
+                                <span class="label">Networking / ingress</span>
+                                <h3>Traefik Done Properly in a Homelab: Nextcloud, Home Assistant: Reverse Porxy</h3>
+                            </div>
+                            <div class="article-meta">~7 min</div>
+                        </header>
+                        <p>How I think about ingress, reverse proxying, and keeping a homelab flexible without turning it into a brittle snowflake.</p>
+                        <div class="card-links">
+                            <a href="https://teckdebate.medium.com/traefik-done-properly-in-a-homelab-nextcloud-home-assistant-reverse-porxy-e41bafbbbcb9" target="_blank" rel="noreferrer">Read article</a>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <header>
+                            <div>
+                                <span class="label">Platform / networking</span>
+                                <h3>Tailscale on Proxmox: Solving the “UDP GRO Forwarding” Warning</h3>
+                            </div>
+                            <div class="article-meta">~5 min</div>
+                        </header>
+                        <p>A focused writeup on a real network issue that shows troubleshooting discipline and host-level infrastructure thinking.</p>
+                        <div class="card-links">
+                            <a href="https://teckdebate.medium.com/tailscale-on-proxmox-solving-the-udp-gro-forwarding-warning-765f56771509" target="_blank" rel="noreferrer">Read article</a>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <header>
+                            <div>
+                                <span class="label">Automation / media ops</span>
+                                <h3>Build a Self-Updating Media Library: qBittorrent to Jellyfin Automation</h3>
+                            </div>
+                            <div class="article-meta">~6 min</div>
+                        </header>
+                        <p>Automation that connects download flow to media management, with a practical eye on long-term homelab maintenance.</p>
+                        <div class="card-links">
+                            <a href="https://teckdebate.medium.com/build-a-self-updating-media-library-qbittorrent-to-jellyfin-automation-3978b0d25938" target="_blank" rel="noreferrer">Read article</a>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <header>
+                            <div>
+                                <span class="label">DNS / networking</span>
+                                <h3>Setting Up Unbound On Raspberry Pi for Secure DNS Resolution</h3>
+                            </div>
+                            <div class="article-meta">~5 min</div>
+                        </header>
+                        <p>DNS as infrastructure, not a checkbox: recursive resolution, security, and visibility are the point here.</p>
+                        <div class="card-links">
+                            <a href="https://teckdebate.medium.com/setting-up-unbound-raspberry-pi-for-secure-dns-resolution-01d320411bc5" target="_blank" rel="noreferrer">Read article</a>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <header>
+                            <div>
+                                <span class="label">CI/CD</span>
+                                <h3>Effortless CI/CD Deployment for Homelab Applications Using GitHub Actions</h3>
+                            </div>
+                            <div class="article-meta">~6 min</div>
+                        </header>
+                        <p>Shows the pattern I prefer: small, repeatable delivery automation that is easy to debug and hard to misread.</p>
+                        <div class="card-links">
+                            <a href="https://teckdebate.medium.com/effortless-ci-cd-deployment-for-homelab-applications-using-github-actions-a630b8239aa7" target="_blank" rel="noreferrer">Read article</a>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <header>
+                            <div>
+                                <span class="label">Terraform / docs</span>
+                                <h3>Terraform Docs Tutorial: Generate READMEs for Your Modules</h3>
+                            </div>
+                            <div class="article-meta">~4 min</div>
+                        </header>
+                        <p>Infrastructure code should explain itself. This article reinforces the documentation-first delivery style I use in practice.</p>
+                        <div class="card-links">
+                            <a href="https://teckdebate.medium.com/terraform-docs-tutorial-generate-readmes-for-your-modules-412597aa351a" target="_blank" rel="noreferrer">Read article</a>
+                        </div>
+                    </article>
                 </div>
             </section>
 
-            <section class="section-card reveal delay-4" id="contact">
-                <h2 class="section-title">Contact</h2>
-                <p class="section-intro">
-                    If you are reviewing my work for a role, collaboration, or technical discussion, these are the best places to reach me and review more of my work.
-                </p>
-                <div class="contact-list">
-                    <div class="item">
-                        <strong>GitHub</strong>
-                        <a href="https://github.com/AcidBurn18" target="_blank" rel="noreferrer">github.com/AcidBurn18</a>
+            <section id="github" class="section-card reveal delay-4">
+                <div class="section-kicker">GitHub</div>
+                <div class="section-head">
+                    <h2 class="section-title">Selected public repositories and contribution themes.</h2>
+                </div>
+                <div class="summary-layout">
+                    <div class="summary-copy">
+                        <p>
+                            Public work spans cloud foundations, self-hosted infrastructure, security documentation, and Terraform-related tooling.
+                            Some repositories are intentionally lightweight or experimental, so the portfolio treats them as proof of approach rather than completed products.
+                        </p>
+                        <p>
+                            The useful pattern across the public repos is consistent: build the platform, document the reasoning, and keep the repo easy to review.
+                        </p>
                     </div>
-                    <div class="item">
-                        <strong>LinkedIn</strong>
-                        <a href="https://in.linkedin.com/in/gotoansh" target="_blank" rel="noreferrer">linkedin.com/in/gotoansh</a>
+                    <div class="mini-grid">
+                        <div class="mini-card">
+                            <span class="label">Contribution summary</span>
+                            <h3>Cloud + infrastructure + docs</h3>
+                            <p>Terraform, Azure, homelab systems, automation, and readable technical writing.</p>
+                        </div>
+                        <div class="mini-card">
+                            <span class="label">Recent public work</span>
+                            <h3>Homelab and security tooling</h3>
+                            <p>Recently updated repos include homeserver_public, scd-agent, and homelab-mover.</p>
+                        </div>
+                        <div class="mini-card">
+                            <span class="label">Profile signal</span>
+                            <h3>Public footprint</h3>
+                            <p>GitHub profile, Medium publication, and project repos all reinforce the same engineering identity.</p>
+                        </div>
                     </div>
-                    <div class="item">
-                        <strong>Medium</strong>
-                        <a href="https://teckdebate.medium.com/" target="_blank" rel="noreferrer">teckdebate.medium.com</a>
+                </div>
+                <div class="repo-grid" style="margin-top: 18px;">
+                    <article class="repo-card">
+                        <header>
+                            <div>
+                                <span class="label">Pinned-style repo</span>
+                                <h3>homeserver_public</h3>
+                            </div>
+                            <div class="repo-meta">Self-hosted DevOps home lab</div>
+                        </header>
+                        <p>Docker-based infrastructure running multiple services with a focus on networking and system design.</p>
+                        <div class="card-links">
+                            <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">Open repo</a>
+                        </div>
+                    </article>
+                    <article class="repo-card">
+                        <header>
+                            <div>
+                                <span class="label">Pinned-style repo</span>
+                                <h3>devops-case-study</h3>
+                            </div>
+                            <div class="repo-meta">Azure landing zone work</div>
+                        </header>
+                        <p>Public-safe Azure platform case study with Terraform modules and architecture documentation.</p>
+                        <div class="card-links">
+                            <a href="https://github.com/AcidBurn18/devops-case-study" target="_blank" rel="noreferrer">Open repo</a>
+                        </div>
+                    </article>
+                    <article class="repo-card">
+                        <header>
+                            <div>
+                                <span class="label">Pinned-style repo</span>
+                                <h3>scd-agent</h3>
+                            </div>
+                            <div class="repo-meta">Security document automation</div>
+                        </header>
+                        <p>Security Control Document generation for Azure cloud services using Azure AI Foundry.</p>
+                        <div class="card-links">
+                            <a href="https://github.com/AcidBurn18/scd-agent" target="_blank" rel="noreferrer">Open repo</a>
+                        </div>
+                    </article>
+                    <article class="repo-card">
+                        <header>
+                            <div>
+                                <span class="label">Pinned-style repo</span>
+                                <h3>Terraform</h3>
+                            </div>
+                            <div class="repo-meta">Terraform-related codes and documents</div>
+                        </header>
+                        <p>Infrastructure-as-code material that supports the documentation-first story in the portfolio.</p>
+                        <div class="card-links">
+                            <a href="https://github.com/AcidBurn18/Terraform" target="_blank" rel="noreferrer">Open repo</a>
+                        </div>
+                    </article>
+                    <article class="repo-card">
+                        <header>
+                            <div>
+                                <span class="label">Recent update</span>
+                                <h3>homelab-mover</h3>
+                            </div>
+                            <div class="repo-meta">Homelab file mover automation</div>
+                        </header>
+                        <p>A small automation repo that reinforces the practical operations side of the public footprint.</p>
+                        <div class="card-links">
+                            <a href="https://github.com/AcidBurn18/homelab-mover" target="_blank" rel="noreferrer">Open repo</a>
+                        </div>
+                    </article>
+                    <article class="repo-card">
+                        <header>
+                            <div>
+                                <span class="label">Recent update</span>
+                                <h3>security-documents</h3>
+                            </div>
+                            <div class="repo-meta">Cloud security collateral</div>
+                        </header>
+                        <p>Supporting material for cloud security documents and governance-oriented workflow.</p>
+                        <div class="card-links">
+                            <a href="https://github.com/AcidBurn18/security-documents" target="_blank" rel="noreferrer">Open repo</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="certifications" class="section-card reveal delay-5">
+                <div class="section-kicker">Certifications</div>
+                <div class="section-head">
+                    <h2 class="section-title">Credential presentation with verification links.</h2>
+                </div>
+                <div class="cert-grid">
+                    <article class="cert-card">
+                        <header>
+                            <div>
+                                <span class="label">Microsoft</span>
+                                <h3>Azure Administrator Associate (AZ-104)</h3>
+                            </div>
+                            <div class="cert-meta">Year not publicly listed</div>
+                        </header>
+                        <div class="cert-specs">
+                            <div class="spec-line">
+                                <strong>Provider</strong>
+                                <span>Microsoft</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Credential</strong>
+                                <span>Azure Administrator Associate (AZ-104)</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Verification</strong>
+                                <span><a href="https://www.credential.net/dc4245f0-9c17-427d-b085-61b505ac7ddd" target="_blank" rel="noreferrer">Credential record</a></span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="cert-card">
+                        <header>
+                            <div>
+                                <span class="label">Google Cloud</span>
+                                <h3>Professional DevOps Engineer</h3>
+                            </div>
+                            <div class="cert-meta">Year not publicly listed</div>
+                        </header>
+                        <div class="cert-specs">
+                            <div class="spec-line">
+                                <strong>Provider</strong>
+                                <span>Google Cloud</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Credential</strong>
+                                <span>Professional DevOps Engineer</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Verification</strong>
+                                <span><a href="https://www.credential.net/309f4179-f9ab-4a34-bcad-7b3ab9854091" target="_blank" rel="noreferrer">Credential record</a></span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="cert-card">
+                        <header>
+                            <div>
+                                <span class="label">Google Cloud</span>
+                                <h3>Associate Cloud Engineer</h3>
+                            </div>
+                            <div class="cert-meta">Public verification link not listed</div>
+                        </header>
+                        <div class="cert-specs">
+                            <div class="spec-line">
+                                <strong>Provider</strong>
+                                <span>Google Cloud</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Credential</strong>
+                                <span>Associate Cloud Engineer</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Verification</strong>
+                                <span>Listed in the public profile; verification link not shared on the page.</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="cert-card">
+                        <header>
+                            <div>
+                                <span class="label">Languages</span>
+                                <h3>IELTS C1 Band</h3>
+                            </div>
+                            <div class="cert-meta">Public verification link not listed</div>
+                        </header>
+                        <div class="cert-specs">
+                            <div class="spec-line">
+                                <strong>Provider</strong>
+                                <span>IELTS</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Credential</strong>
+                                <span>C1 band</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Verification</strong>
+                                <span>Included as part of the public learning profile.</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="cert-card">
+                        <header>
+                            <div>
+                                <span class="label">Languages</span>
+                                <h3>Goethe German A1</h3>
+                            </div>
+                            <div class="cert-meta">Public verification link not listed</div>
+                        </header>
+                        <div class="cert-specs">
+                            <div class="spec-line">
+                                <strong>Provider</strong>
+                                <span>Goethe-Institut</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Credential</strong>
+                                <span>German A1</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Verification</strong>
+                                <span>Included as part of the public learning profile.</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="contact" class="section-card reveal delay-5">
+                <div class="section-kicker">Contact</div>
+                <div class="contact-layout">
+                    <div class="contact-cta">
+                        <h3>Let’s build reliable infrastructure together.</h3>
+                        <p>
+                            If you are reviewing this portfolio for a role, collaboration, or technical conversation, these are the fastest ways to reach me.
+                            I keep the contact options simple and the focus on engineering work.
+                        </p>
+                    </div>
+                    <div class="contact-grid">
+                        <div class="contact-card">
+                            <strong>LinkedIn</strong>
+                            <a href="https://in.linkedin.com/in/gotoansh" target="_blank" rel="noreferrer">linkedin.com/in/gotoansh</a>
+                        </div>
+                        <div class="contact-card">
+                            <strong>GitHub</strong>
+                            <a href="https://github.com/AcidBurn18" target="_blank" rel="noreferrer">github.com/AcidBurn18</a>
+                        </div>
+                        <div class="contact-card">
+                            <strong>Medium</strong>
+                            <a href="https://teckdebate.medium.com/" target="_blank" rel="noreferrer">teckdebate.medium.com</a>
+                        </div>
+                        <div class="contact-card">
+                            <strong>Email</strong>
+                            <span>Available on request / via LinkedIn DM</span>
+                        </div>
                     </div>
                 </div>
             </section>
         </main>
 
-        <footer class="footer reveal delay-4">
+        <footer class="footer reveal delay-5">
             <p>Portfolio site for Ansh Agrawal.</p>
         </footer>
     </div>
