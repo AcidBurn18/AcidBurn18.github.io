@@ -590,6 +590,93 @@
             outline: none;
         }
 
+        .case-study-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .case-study-card {
+            overflow: hidden;
+            padding: 0;
+            display: grid;
+        }
+
+        .case-study-card figure {
+            margin: 0;
+            padding: 16px 16px 0;
+        }
+
+        .case-study-card img {
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow-soft);
+            background: #fff;
+            object-fit: contain;
+        }
+
+        .case-study-body {
+            padding: 18px 18px 20px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .case-study-body p {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .architecture-card {
+            padding: 22px;
+        }
+
+        .architecture-card ul {
+            margin: 14px 0 0;
+            padding-left: 18px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .dashboard-card {
+            padding: 18px;
+        }
+
+        .dashboard-value {
+            font-size: 1.7rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .writing-group {
+            display: grid;
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .principles-card {
+            padding: 18px;
+        }
+
         .footer {
             padding: 28px 4px 8px;
             text-align: center;
@@ -630,7 +717,11 @@
             .cert-grid,
             .skill-groups,
             .contact-grid,
-            .theme-grid {
+            .theme-grid,
+            .case-study-grid,
+            .architecture-grid,
+            .dashboard-grid,
+            .principles-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -641,6 +732,7 @@
             .mini-grid {
                 grid-template-columns: 1fr;
             }
+
         }
 
         @media (max-width: 640px) {
@@ -698,7 +790,10 @@
             <div class="nav-links" aria-label="Primary navigation">
                 <a href="#summary">Summary</a>
                 <a href="#experience">Experience</a>
+                <a href="#case-studies">Case Studies</a>
+                <a href="#architecture">Architecture</a>
                 <a href="#projects">Projects</a>
+                <a href="#dashboard">Dashboard</a>
                 <a href="#skills">Skills</a>
                 <a href="#writing">Writing</a>
                 <a href="#certifications">Certifications</a>
@@ -748,14 +843,10 @@
                 <div class="summary-layout">
                     <div class="summary-copy">
                         <p>
-                            I work like an operator: standardize the foundation, automate the change path, keep failure domains small,
-                            and document the result so the next engineer can reason about it quickly. The public portfolio is built to
-                            show that approach through cloud infrastructure, Terraform, Kubernetes, networking, and self-hosted systems.
+                            I standardize the foundation, automate the change path, keep failure domains small, and document the result.
                         </p>
                         <p>
-                            The private homelab documentation reinforces the same identity with concrete runbooks for backup architecture,
-                            DNS observability, and zero-disruption ingress migration. Medium articles provide the public-facing proof by
-                            turning those same infrastructure themes into clear technical writeups.
+                            The homelab docs and Medium posts show the same operating style in public and private form.
                         </p>
                     </div>
                     <div class="theme-grid" aria-label="Primary themes">
@@ -795,15 +886,15 @@
                         <div class="project-specs">
                             <div class="spec-line">
                                 <strong>Problem</strong>
-                                <span>Infrastructure delivery needs to stay repeatable, secure, and easy to hand off across cloud and platform work.</span>
+                                <span>Keep cloud and platform delivery repeatable, secure, and easy to hand off.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Solution</strong>
-                                <span>Focus on cloud infrastructure, Kubernetes, automation, and documentation-first delivery patterns.</span>
+                                <span>Cloud infrastructure, Kubernetes, automation, documentation-first delivery.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Impact</strong>
-                                <span>Creates a stronger operator mindset: cleaner change flow, clearer reasoning, and less reliance on tribal knowledge.</span>
+                                <span>Cleaner change flow and less tribal knowledge.</span>
                             </div>
                         </div>
                     </article>
@@ -813,17 +904,258 @@
                         <div class="project-specs">
                             <div class="spec-line">
                                 <strong>Problem</strong>
-                                <span>Self-hosted platforms break down quickly when ingress, DNS, backups, and observability are treated as afterthoughts.</span>
+                                <span>Self-hosted platforms fail fast when ingress, DNS, backups, and observability drift.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Solution</strong>
-                                <span>Build the lab around Traefik, step-ca, OPNsense, DNS observability, backups, and staged automation.</span>
+                                <span>Traefik, step-ca, OPNsense, DNS observability, backups, staged automation.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Impact</strong>
-                                <span>The homelab becomes a proving ground for production-grade patterns without pretending to be finished enterprise software.</span>
+                                <span>A proving ground for production-grade patterns.</span>
                             </div>
                         </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="case-studies" class="section-card reveal delay-3">
+                <div class="section-kicker">Case Studies</div>
+                <div class="section-head">
+                    <h2 class="section-title">Homelab diagrams.</h2>
+                </div>
+                <div class="case-study-grid">
+                    <article class="case-study-card">
+                        <figure>
+                            <img src="assets/phase2/network-flow.png" alt="Network flow diagram showing OPNsense, AdGuard, Twingate, Tailscale, Nginx reverse proxy, and the HomeServer Docker stack.">
+                        </figure>
+                        <div class="case-study-body">
+                            <span class="label">Network flow</span>
+                            <h3>Ingress, DNS, and remote access as one system</h3>
+                            <div class="project-specs">
+                                <div class="spec-line">
+                                    <strong>Problem</strong>
+                                    <span>Remote access had to stay clear and debuggable across local browsing, VPN access, and public ingress.</span>
+                                </div>
+                                <div class="spec-line">
+                                    <strong>Stack</strong>
+                                    <span>OPNsense, Unbound, AdGuard, Traefik, Nginx, Twingate, Tailscale, Docker.</span>
+                                </div>
+                                <div class="spec-line">
+                                    <strong>Architecture</strong>
+                                    <span>Split the traffic planes so DNS, app routing, and remote access can be reasoned about independently.</span>
+                                </div>
+                                <div class="spec-line">
+                                    <strong>Result</strong>
+                                    <span>Cleaner troubleshooting and a better story for how the homelab is actually reached.</span>
+                                </div>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub</a>
+                                <a href="https://teckdebate.medium.com/traefik-done-properly-in-a-homelab-nextcloud-home-assistant-reverse-porxy-e41bafbbbcb9" target="_blank" rel="noreferrer">Medium</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="case-study-card">
+                        <figure>
+                            <img src="assets/phase2/service-topology.png" alt="Service topology diagram showing Proxmox hosts, VMs, LXCs, Docker workloads, and supporting devices across the home server stack.">
+                        </figure>
+                        <div class="case-study-body">
+                            <span class="label">Service topology</span>
+                            <h3>Hosts, VMs, LXCs, and containerized workloads</h3>
+                            <div class="project-specs">
+                                <div class="spec-line">
+                                    <strong>Problem</strong>
+                                    <span>A homelab reads like clutter unless the control plane, utility services, and app workloads are grouped by host.</span>
+                                </div>
+                                <div class="spec-line">
+                                    <strong>Stack</strong>
+                                    <span>Proxmox, Ubuntu Server, Docker, Home Assistant, Jellyfin, Nextcloud, observability services.</span>
+                                </div>
+                                <div class="spec-line">
+                                    <strong>Architecture</strong>
+                                    <span>Separate edge, observability, productivity, media, and auxiliary tasks so failure domains stay visible.</span>
+                                </div>
+                                <div class="spec-line">
+                                    <strong>Result</strong>
+                                    <span>The diagram makes placement decisions obvious and keeps service ownership readable.</span>
+                                </div>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub</a>
+                                <a href="https://teckdebate.medium.com/tailscale-on-proxmox-solving-the-udp-gro-forwarding-warning-765f56771509" target="_blank" rel="noreferrer">Medium</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="case-study-card">
+                        <figure>
+                            <img src="assets/phase2/network-topology.png" alt="Virtual networking diagram showing Proxmox bridges, tap and veth pairs, Docker custom bridge, and NAT forwarding boundaries.">
+                        </figure>
+                        <div class="case-study-body">
+                            <span class="label">Virtual networking</span>
+                            <h3>Bridges, NAT, and container networking boundaries</h3>
+                            <div class="project-specs">
+                                <div class="spec-line">
+                                    <strong>Problem</strong>
+                                    <span>Physical links, Proxmox bridges, and container namespaces can blur together without a clean layer model.</span>
+                                </div>
+                                <div class="spec-line">
+                                    <strong>Stack</strong>
+                                    <span>Proxmox vmbr0, tap devices, veth pairs, Docker custom bridge, iptables / netfilter, Linux namespaces.</span>
+                                </div>
+                                <div class="spec-line">
+                                    <strong>Architecture</strong>
+                                    <span>Show the path from physical NIC to bridge to workload so L2 and L3 responsibilities stay separated.</span>
+                                </div>
+                                <div class="spec-line">
+                                    <strong>Result</strong>
+                                    <span>The network story becomes a diagram you can inspect instead of a pile of assumptions.</span>
+                                </div>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub</a>
+                                <a href="https://teckdebate.medium.com/traefik-done-properly-in-a-homelab-nextcloud-home-assistant-reverse-porxy-e41bafbbbcb9" target="_blank" rel="noreferrer">Medium</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="architecture" class="section-card reveal delay-3">
+                <div class="section-kicker">Architecture</div>
+                <div class="section-head">
+                    <h2 class="section-title">System view.</h2>
+                </div>
+                <div class="architecture-grid">
+                    <article class="architecture-card mini-card">
+                        <span class="label">Home Lab</span>
+                        <h3>Reproducible local infrastructure</h3>
+                        <p>Proxmox, Docker, and documented service placement keep the lab understandable after every change.</p>
+                        <ul>
+                            <li>Goals: stable services, readable failure domains, repeatable rebuilds.</li>
+                            <li>Design: split edge, workloads, and utility services into explicit layers.</li>
+                            <li>Flow: ingress and DNS are treated as first-class infrastructure.</li>
+                        </ul>
+                    </article>
+                    <article class="architecture-card mini-card">
+                        <span class="label">Networking</span>
+                        <h3>Traffic planes with clear boundaries</h3>
+                        <p>The network story separates browsing, VPN, reverse proxy, and local app traffic so troubleshooting is fast.</p>
+                        <ul>
+                            <li>Goals: keep remote access explicit and avoid hidden routing paths.</li>
+                            <li>Design: OPNsense, AdGuard, Unbound, Traefik, Twingate, and Tailscale work as distinct layers.</li>
+                            <li>Flow: every path can be drawn, traced, and explained.</li>
+                        </ul>
+                    </article>
+                    <article class="architecture-card mini-card">
+                        <span class="label">Monitoring</span>
+                        <h3>Visibility before guesswork</h3>
+                        <p>Observability turns the lab into a platform: logs, dashboards, and a visible change path.</p>
+                        <ul>
+                            <li>Goals: detect issues early and keep post-change diagnosis simple.</li>
+                            <li>Design: Promtail, Loki, Grafana, and host-level logging sit alongside services.</li>
+                            <li>Flow: app issues should lead to one obvious place to inspect first.</li>
+                        </ul>
+                    </article>
+                    <article class="architecture-card mini-card">
+                        <span class="label">Automation</span>
+                        <h3>Documentation-first operations</h3>
+                        <p>Infrastructure and writeups move together so the portfolio remains honest as the lab evolves.</p>
+                        <ul>
+                            <li>Goals: reduce tribal knowledge and make the next change easier than the last.</li>
+                            <li>Design: IaC, runbooks, and public writing reinforce the same operating model.</li>
+                            <li>Flow: every meaningful change should leave a paper trail.</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section id="dashboard" class="section-card reveal delay-4">
+                <div class="section-kicker">Infrastructure Dashboard</div>
+                <div class="section-head">
+                    <h2 class="section-title">Infrastructure snapshot.</h2>
+                </div>
+                <div class="dashboard-grid">
+                    <article class="dashboard-card mini-card">
+                        <span class="label">Edge</span>
+                        <div class="dashboard-value">OPNsense</div>
+                        <p>Firewall, gateway, and the front door for remote access paths.</p>
+                    </article>
+                    <article class="dashboard-card mini-card">
+                        <span class="label">Ingress</span>
+                        <div class="dashboard-value">Traefik + Nginx</div>
+                        <p>Reverse proxy layers with explicit routing boundaries.</p>
+                    </article>
+                    <article class="dashboard-card mini-card">
+                        <span class="label">DNS</span>
+                        <div class="dashboard-value">Unbound + AdGuard</div>
+                        <p>Recursive resolution and filtering stay visible and easy to reason about.</p>
+                    </article>
+                    <article class="dashboard-card mini-card">
+                        <span class="label">Observability</span>
+                        <div class="dashboard-value">Promtail + Loki</div>
+                        <p>Log paths, retention, and troubleshooting live beside the stack.</p>
+                    </article>
+                    <article class="dashboard-card mini-card">
+                        <span class="label">Workloads</span>
+                        <div class="dashboard-value">Docker / LXC / VMs</div>
+                        <p>Service placement is split by responsibility, not by convenience.</p>
+                    </article>
+                    <article class="dashboard-card mini-card">
+                        <span class="label">Remote access</span>
+                        <div class="dashboard-value">Twingate + Tailscale</div>
+                        <p>Two access modes, both diagrammed, both intentional.</p>
+                    </article>
+                    <article class="dashboard-card mini-card">
+                        <span class="label">Backup stance</span>
+                        <div class="dashboard-value">Documented</div>
+                        <p>Backups are part of the architecture story, not an afterthought.</p>
+                    </article>
+                    <article class="dashboard-card mini-card">
+                        <span class="label">Source of truth</span>
+                        <div class="dashboard-value">Private runbooks</div>
+                        <p>The public site stays credible by tracing the real lab design back to authoritative notes.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="principles" class="section-card reveal delay-4">
+                <div class="section-kicker">Engineering Principles</div>
+                <div class="section-head">
+                    <h2 class="section-title">Short rules that keep the work sane.</h2>
+                </div>
+                <div class="principles-grid">
+                    <article class="principles-card mini-card">
+                        <span class="label">Reproducible</span>
+                        <h3>Infrastructure should be rebuildable.</h3>
+                        <p>If a change cannot be explained or repeated, it is not ready to be trusted.</p>
+                    </article>
+                    <article class="principles-card mini-card">
+                        <span class="label">Automated</span>
+                        <h3>Automation should remove repetitive work.</h3>
+                        <p>Manual steps belong in runbooks only when the task is genuinely rare.</p>
+                    </article>
+                    <article class="principles-card mini-card">
+                        <span class="label">Observable</span>
+                        <h3>Observability is mandatory.</h3>
+                        <p>If a service matters, there should be a clear way to see when it is unhealthy.</p>
+                    </article>
+                    <article class="principles-card mini-card">
+                        <span class="label">Secure</span>
+                        <h3>Security should be designed in.</h3>
+                        <p>Ingress, remote access, and credentials are handled as architecture decisions, not afterthoughts.</p>
+                    </article>
+                    <article class="principles-card mini-card">
+                        <span class="label">Documented</span>
+                        <h3>Documentation is part of the product.</h3>
+                        <p>A system is easier to maintain when the reasoning lives with the implementation.</p>
+                    </article>
+                    <article class="principles-card mini-card">
+                        <span class="label">Simple</span>
+                        <h3>Prefer simplicity over unnecessary complexity.</h3>
+                        <p>Each extra moving piece must earn its place by making the system easier to operate.</p>
                     </article>
                 </div>
             </section>
@@ -831,7 +1163,7 @@
             <section id="projects" class="section-card reveal delay-3">
                 <div class="section-kicker">Projects</div>
                 <div class="section-head">
-                    <h2 class="section-title">Featured work led by homelab and platform operations.</h2>
+                    <h2 class="section-title">Featured systems and supporting proofs.</h2>
                 </div>
                 <div class="project-grid">
                     <article class="project-card featured">
@@ -840,18 +1172,16 @@
                                 <span class="label">Self-hosted infrastructure</span>
                                 <h3>Home Server DevOps Lab</h3>
                             </div>
-                            <div class="project-meta">Featured</div>
+                            <div class="project-meta">Status: Active</div>
                         </header>
-                        <p>
-                            A long-running home lab that acts like a small platform engineering environment: ingress, DNS, backups, observability, and service operations.
-                        </p>
+                        <p>A long-running home lab that behaves like a small platform engineering environment: ingress, DNS, backups, observability, and service operations.</p>
                         <div class="project-specs">
                             <div class="spec-line">
                                 <strong>Problem</strong>
                                 <span>Self-hosted services become fragile when ingress, TLS, DNS, backup, and logging are managed independently.</span>
                             </div>
                             <div class="spec-line">
-                                <strong>Tech</strong>
+                                <strong>Stack</strong>
                                 <span>Docker Compose, Traefik, step-ca, OPNsense, Unbound, AdGuard, Promtail, Loki, Grafana, NFS backups.</span>
                             </div>
                             <div class="spec-line">
@@ -859,13 +1189,13 @@
                                 <span>Zero-disruption ingress migration, DNS observability, and platform docs that keep the lab understandable.</span>
                             </div>
                             <div class="spec-line">
-                                <strong>Decisions</strong>
-                                <span>Keep operations explicit, prefer small failure domains, and treat the homelab as a real engineering system.</span>
+                                <strong>Impact</strong>
+                                <span>The homelab reads like a real system instead of a pile of services.</span>
                             </div>
                         </div>
                         <div class="card-links">
                             <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub</a>
-                            <a href="https://teckdebate.medium.com/traefik-done-properly-in-a-homelab-nextcloud-home-assistant-reverse-porxy-e41bafbbbcb9" target="_blank" rel="noreferrer">Related reading</a>
+                            <a href="https://teckdebate.medium.com/traefik-done-properly-in-a-homelab-nextcloud-home-assistant-reverse-porxy-e41bafbbbcb9" target="_blank" rel="noreferrer">Medium</a>
                         </div>
                     </article>
 
@@ -875,18 +1205,16 @@
                                 <span class="label">Cloud infrastructure</span>
                                 <h3>Azure Landing Zone Foundations</h3>
                             </div>
-                            <div class="project-meta">Secondary</div>
+                            <div class="project-meta">Status: Supporting</div>
                         </header>
-                        <p>
-                            A supporting public-safe Azure example. Useful as a code signal, but intentionally secondary to the homelab story until the repository is more complete.
-                        </p>
+                        <p>A public-safe Azure example for platform thinking without overclaiming finished code.</p>
                         <div class="project-specs">
                             <div class="spec-line">
                                 <strong>Problem</strong>
-                                <span>Present landing zone thinking without overstating the amount of finished public code available today.</span>
+                                <span>Present landing zone thinking without pretending the repository is a finished enterprise rollout.</span>
                             </div>
                             <div class="spec-line">
-                                <strong>Tech</strong>
+                                <strong>Stack</strong>
                                 <span>Azure, Terraform, reusable modules, architecture documentation, platform composition.</span>
                             </div>
                             <div class="spec-line">
@@ -894,13 +1222,13 @@
                                 <span>Module-driven foundation and documented boundaries, treated as supporting evidence rather than the center of the portfolio.</span>
                             </div>
                             <div class="spec-line">
-                                <strong>Decisions</strong>
-                                <span>Keep it honest: strong enough to show platform thinking, not framed as finished enterprise delivery.</span>
+                                <strong>Impact</strong>
+                                <span>Shows cloud design judgment while the homelab story carries the strongest proof.</span>
                             </div>
                         </div>
                         <div class="card-links">
                             <a href="https://github.com/AcidBurn18/devops-case-study" target="_blank" rel="noreferrer">GitHub</a>
-                            <a href="https://teckdebate.medium.com/cross-peering-power-terraform-azurermrm-unleashed-62a9839f45fd" target="_blank" rel="noreferrer">Related reading</a>
+                            <a href="https://teckdebate.medium.com/cross-peering-power-terraform-azurermrm-unleashed-62a9839f45fd" target="_blank" rel="noreferrer">Medium</a>
                         </div>
                     </article>
 
@@ -910,18 +1238,16 @@
                                 <span class="label">Automation</span>
                                 <h3>Terraform Docs and IaC Hygiene</h3>
                             </div>
-                            <div class="project-meta">Supporting</div>
+                            <div class="project-meta">Status: Supporting</div>
                         </header>
-                        <p>
-                            Infrastructure as code is strongest when the modules are documented as part of the delivery flow, not as an afterthought.
-                        </p>
+                        <p>Docs belong with IaC, not after it.</p>
                         <div class="project-specs">
                             <div class="spec-line">
                                 <strong>Problem</strong>
                                 <span>Terraform modules and supporting code drift without readable documentation and repeatable structure.</span>
                             </div>
                             <div class="spec-line">
-                                <strong>Tech</strong>
+                                <strong>Stack</strong>
                                 <span>Terraform, markdown documentation, module READMEs, repo hygiene.</span>
                             </div>
                             <div class="spec-line">
@@ -929,13 +1255,13 @@
                                 <span>Docs generated or maintained alongside code so the repository explains itself.</span>
                             </div>
                             <div class="spec-line">
-                                <strong>Decisions</strong>
-                                <span>Keep the delivery path boring, reviewable, and easy to extend.</span>
+                                <strong>Impact</strong>
+                                <span>Turns infrastructure code into something the next engineer can safely extend.</span>
                             </div>
                         </div>
                         <div class="card-links">
                             <a href="https://github.com/AcidBurn18/Terraform" target="_blank" rel="noreferrer">GitHub</a>
-                            <a href="https://teckdebate.medium.com/terraform-docs-tutorial-generate-readmes-for-your-modules-412597aa351a" target="_blank" rel="noreferrer">Related reading</a>
+                            <a href="https://teckdebate.medium.com/terraform-docs-tutorial-generate-readmes-for-your-modules-412597aa351a" target="_blank" rel="noreferrer">Medium</a>
                         </div>
                     </article>
 
@@ -945,18 +1271,16 @@
                                 <span class="label">Security / automation</span>
                                 <h3>Security Control Document Automation</h3>
                             </div>
-                            <div class="project-meta">Supporting</div>
+                            <div class="project-meta">Status: Supporting</div>
                         </header>
-                        <p>
-                            A public repo that shows how I approach security documentation automation for cloud services without overclaiming enterprise maturity.
-                        </p>
+                        <p>Security doc automation without pretending enterprise maturity.</p>
                         <div class="project-specs">
                             <div class="spec-line">
                                 <strong>Problem</strong>
                                 <span>Security control documentation is repetitive and easy to desynchronize from the actual cloud environment.</span>
                             </div>
                             <div class="spec-line">
-                                <strong>Tech</strong>
+                                <strong>Stack</strong>
                                 <span>Azure AI Foundry, security documents, cloud service documentation workflows.</span>
                             </div>
                             <div class="spec-line">
@@ -964,8 +1288,8 @@
                                 <span>Document generation / support tooling that reduces the manual burden of writing security collateral.</span>
                             </div>
                             <div class="spec-line">
-                                <strong>Decisions</strong>
-                                <span>Use it as a proof point for automation and governance awareness, not as a finished consulting product.</span>
+                                <strong>Impact</strong>
+                                <span>Signals governance awareness and automation discipline in a compact format.</span>
                             </div>
                         </div>
                         <div class="card-links">
@@ -1063,85 +1387,120 @@
                 <div class="section-head">
                     <h2 class="section-title">Curated technical articles from Medium.</h2>
                 </div>
-                <div class="article-grid">
-                    <article class="article-card">
-                        <header>
-                            <div>
-                                <span class="label">Networking / ingress</span>
-                                <h3>Traefik Done Properly in a Homelab: Nextcloud, Home Assistant: Reverse Porxy</h3>
+
+                <div class="writing-group">
+                    <div class="section-head">
+                        <h3 class="section-title" style="font-size:1.25rem">Networking</h3>
+                    </div>
+                    <div class="article-grid">
+                        <article class="article-card">
+                            <header>
+                                <div>
+                                    <span class="label">Ingress / networking</span>
+                                    <h3>Traefik Done Properly in a Homelab: Nextcloud, Home Assistant: Reverse Porxy</h3>
+                                </div>
+                                <div class="article-meta">30 May 2026 · ~7 min</div>
+                            </header>
+                            <p>How I think about ingress, reverse proxying, and keeping a homelab flexible without turning it into a brittle snowflake.</p>
+                            <div class="card-links">
+                                <a href="https://teckdebate.medium.com/traefik-done-properly-in-a-homelab-nextcloud-home-assistant-reverse-porxy-e41bafbbbcb9" target="_blank" rel="noreferrer">Read article</a>
                             </div>
-                            <div class="article-meta">~7 min</div>
-                        </header>
-                        <p>How I think about ingress, reverse proxying, and keeping a homelab flexible without turning it into a brittle snowflake.</p>
-                        <div class="card-links">
-                            <a href="https://teckdebate.medium.com/traefik-done-properly-in-a-homelab-nextcloud-home-assistant-reverse-porxy-e41bafbbbcb9" target="_blank" rel="noreferrer">Read article</a>
-                        </div>
-                    </article>
-                    <article class="article-card">
-                        <header>
-                            <div>
-                                <span class="label">Platform / networking</span>
-                                <h3>Tailscale on Proxmox: Solving the “UDP GRO Forwarding” Warning</h3>
+                        </article>
+                        <article class="article-card">
+                            <header>
+                                <div>
+                                    <span class="label">Platform / networking</span>
+                                    <h3>Tailscale on Proxmox: Solving the “UDP GRO Forwarding” Warning</h3>
+                                </div>
+                                <div class="article-meta">24 Jan 2026 · ~5 min</div>
+                            </header>
+                            <p>A focused writeup on a real network issue that shows troubleshooting discipline and host-level infrastructure thinking.</p>
+                            <div class="card-links">
+                                <a href="https://teckdebate.medium.com/tailscale-on-proxmox-solving-the-udp-gro-forwarding-warning-765f56771509" target="_blank" rel="noreferrer">Read article</a>
                             </div>
-                            <div class="article-meta">~5 min</div>
-                        </header>
-                        <p>A focused writeup on a real network issue that shows troubleshooting discipline and host-level infrastructure thinking.</p>
-                        <div class="card-links">
-                            <a href="https://teckdebate.medium.com/tailscale-on-proxmox-solving-the-udp-gro-forwarding-warning-765f56771509" target="_blank" rel="noreferrer">Read article</a>
-                        </div>
-                    </article>
-                    <article class="article-card">
-                        <header>
-                            <div>
-                                <span class="label">Automation / media ops</span>
-                                <h3>Build a Self-Updating Media Library: qBittorrent to Jellyfin Automation</h3>
+                        </article>
+                        <article class="article-card">
+                            <header>
+                                <div>
+                                    <span class="label">DNS / networking</span>
+                                    <h3>Setting Up Unbound On Raspberry Pi for Secure DNS Resolution</h3>
+                                </div>
+                                <div class="article-meta">08 Jan 2025 · ~5 min</div>
+                            </header>
+                            <p>DNS as infrastructure, not a checkbox: recursive resolution, security, and visibility are the point here.</p>
+                            <div class="card-links">
+                                <a href="https://teckdebate.medium.com/setting-up-unbound-raspberry-pi-for-secure-dns-resolution-01d320411bc5" target="_blank" rel="noreferrer">Read article</a>
                             </div>
-                            <div class="article-meta">~6 min</div>
-                        </header>
-                        <p>Automation that connects download flow to media management, with a practical eye on long-term homelab maintenance.</p>
-                        <div class="card-links">
-                            <a href="https://teckdebate.medium.com/build-a-self-updating-media-library-qbittorrent-to-jellyfin-automation-3978b0d25938" target="_blank" rel="noreferrer">Read article</a>
-                        </div>
-                    </article>
-                    <article class="article-card">
-                        <header>
-                            <div>
-                                <span class="label">DNS / networking</span>
-                                <h3>Setting Up Unbound On Raspberry Pi for Secure DNS Resolution</h3>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="writing-group">
+                    <div class="section-head">
+                        <h3 class="section-title" style="font-size:1.25rem">Automation</h3>
+                    </div>
+                    <div class="article-grid">
+                        <article class="article-card">
+                            <header>
+                                <div>
+                                    <span class="label">Automation / media ops</span>
+                                    <h3>Build a Self-Updating Media Library: qBittorrent to Jellyfin Automation</h3>
+                                </div>
+                                <div class="article-meta">19 Dec 2025 · ~6 min</div>
+                            </header>
+                            <p>Automation that connects download flow to media management, with a practical eye on long-term homelab maintenance.</p>
+                            <div class="card-links">
+                                <a href="https://teckdebate.medium.com/build-a-self-updating-media-library-qbittorrent-to-jellyfin-automation-3978b0d25938" target="_blank" rel="noreferrer">Read article</a>
                             </div>
-                            <div class="article-meta">~5 min</div>
-                        </header>
-                        <p>DNS as infrastructure, not a checkbox: recursive resolution, security, and visibility are the point here.</p>
-                        <div class="card-links">
-                            <a href="https://teckdebate.medium.com/setting-up-unbound-raspberry-pi-for-secure-dns-resolution-01d320411bc5" target="_blank" rel="noreferrer">Read article</a>
-                        </div>
-                    </article>
-                    <article class="article-card">
-                        <header>
-                            <div>
-                                <span class="label">CI/CD</span>
-                                <h3>Effortless CI/CD Deployment for Homelab Applications Using GitHub Actions</h3>
+                        </article>
+                        <article class="article-card">
+                            <header>
+                                <div>
+                                    <span class="label">CI/CD</span>
+                                    <h3>Effortless CI/CD Deployment for Homelab Applications Using GitHub Actions</h3>
+                                </div>
+                                <div class="article-meta">14 Dec 2024 · ~6 min</div>
+                            </header>
+                            <p>Shows the pattern I prefer: small, repeatable delivery automation that is easy to debug and hard to misread.</p>
+                            <div class="card-links">
+                                <a href="https://teckdebate.medium.com/effortless-ci-cd-deployment-for-homelab-applications-using-github-actions-a630b8239aa7" target="_blank" rel="noreferrer">Read article</a>
                             </div>
-                            <div class="article-meta">~6 min</div>
-                        </header>
-                        <p>Shows the pattern I prefer: small, repeatable delivery automation that is easy to debug and hard to misread.</p>
-                        <div class="card-links">
-                            <a href="https://teckdebate.medium.com/effortless-ci-cd-deployment-for-homelab-applications-using-github-actions-a630b8239aa7" target="_blank" rel="noreferrer">Read article</a>
-                        </div>
-                    </article>
-                    <article class="article-card">
-                        <header>
-                            <div>
-                                <span class="label">Terraform / docs</span>
-                                <h3>Terraform Docs Tutorial: Generate READMEs for Your Modules</h3>
+                        </article>
+                        <article class="article-card">
+                            <header>
+                                <div>
+                                    <span class="label">Terraform / docs</span>
+                                    <h3>Terraform Docs Tutorial: Generate READMEs for Your Modules</h3>
+                                </div>
+                                <div class="article-meta">26 Mar 2024 · ~4 min</div>
+                            </header>
+                            <p>Infrastructure code should explain itself. This article reinforces the documentation-first delivery style I use in practice.</p>
+                            <div class="card-links">
+                                <a href="https://teckdebate.medium.com/terraform-docs-tutorial-generate-readmes-for-your-modules-412597aa351a" target="_blank" rel="noreferrer">Read article</a>
                             </div>
-                            <div class="article-meta">~4 min</div>
-                        </header>
-                        <p>Infrastructure code should explain itself. This article reinforces the documentation-first delivery style I use in practice.</p>
-                        <div class="card-links">
-                            <a href="https://teckdebate.medium.com/terraform-docs-tutorial-generate-readmes-for-your-modules-412597aa351a" target="_blank" rel="noreferrer">Read article</a>
-                        </div>
-                    </article>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="writing-group">
+                    <div class="section-head">
+                        <h3 class="section-title" style="font-size:1.25rem">Security</h3>
+                    </div>
+                    <div class="article-grid">
+                        <article class="article-card">
+                            <header>
+                                <div>
+                                    <span class="label">Security / Kubernetes</span>
+                                    <h3>Secure Your Home Server: A Complete Guide to Self-Signed Certificates with Kubernetes</h3>
+                                </div>
+                                <div class="article-meta">11 Aug 2024 · ~6 min</div>
+                            </header>
+                            <p>Certificates and trust boundaries are treated as infrastructure concerns rather than a one-off setup step.</p>
+                            <div class="card-links">
+                                <a href="https://teckdebate.medium.com/secure-your-home-server-a-complete-guide-to-self-signed-certificates-with-kubernetes-64ba6a08d46e" target="_blank" rel="noreferrer">Read article</a>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </section>
 
@@ -1162,8 +1521,7 @@
                     <div class="contact-cta">
                         <h3>Let’s build reliable infrastructure together.</h3>
                         <p>
-                            If you are reviewing this portfolio for a role, collaboration, or technical conversation, these are the fastest ways to reach me.
-                            I keep the contact options simple and the focus on engineering work.
+                            For roles, collaboration, or technical conversation, use the links below.
                         </p>
                     </div>
                     <div class="contact-grid">
@@ -1189,7 +1547,7 @@
         </main>
 
         <footer class="footer reveal delay-5">
-            <p>Portfolio site for Ansh Agrawal.</p>
+            <p>Ansh Agrawal</p>
         </footer>
     </div>
 </body>
