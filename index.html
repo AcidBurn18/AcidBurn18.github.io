@@ -790,10 +790,8 @@
             <div class="nav-links" aria-label="Primary navigation">
                 <a href="#summary">Summary</a>
                 <a href="#experience">Experience</a>
-                <a href="#case-studies">Case Studies</a>
                 <a href="#architecture">Architecture</a>
                 <a href="#projects">Projects</a>
-                <a href="#dashboard">Dashboard</a>
                 <a href="#skills">Skills</a>
                 <a href="#writing">Writing</a>
                 <a href="#certifications">Certifications</a>
@@ -847,6 +845,9 @@
                         </p>
                         <p>
                             The homelab docs and Medium posts show the same operating style in public and private form.
+                        </p>
+                        <p class="principles-line">
+                            Reproducible, automated, observable, and documented — every extra moving piece has to earn its place.
                         </p>
                     </div>
                     <div class="theme-grid" aria-label="Primary themes">
@@ -919,10 +920,10 @@
                 </div>
             </section>
 
-            <section id="case-studies" class="section-card reveal delay-3">
-                <div class="section-kicker">Case Studies</div>
+            <section id="architecture" class="section-card reveal delay-3">
+                <div class="section-kicker">Architecture</div>
                 <div class="section-head">
-                    <h2 class="section-title">Homelab diagrams.</h2>
+                    <h2 class="section-title">The homelab as one system.</h2>
                 </div>
                 <div class="case-study-grid">
                     <article class="case-study-card">
@@ -1023,143 +1024,6 @@
                 </div>
             </section>
 
-            <section id="architecture" class="section-card reveal delay-3">
-                <div class="section-kicker">Architecture</div>
-                <div class="section-head">
-                    <h2 class="section-title">System view.</h2>
-                </div>
-                <div class="architecture-grid">
-                    <article class="architecture-card mini-card">
-                        <span class="label">Home Lab</span>
-                        <h3>Reproducible local infrastructure</h3>
-                        <p>Proxmox, Docker, and documented service placement keep the lab understandable after every change.</p>
-                        <ul>
-                            <li>Goals: stable services, readable failure domains, repeatable rebuilds.</li>
-                            <li>Design: split edge, workloads, and utility services into explicit layers.</li>
-                            <li>Flow: ingress and DNS are treated as first-class infrastructure.</li>
-                        </ul>
-                    </article>
-                    <article class="architecture-card mini-card">
-                        <span class="label">Networking</span>
-                        <h3>Traffic planes with clear boundaries</h3>
-                        <p>The network story separates browsing, VPN, reverse proxy, and local app traffic so troubleshooting is fast.</p>
-                        <ul>
-                            <li>Goals: keep remote access explicit and avoid hidden routing paths.</li>
-                            <li>Design: OPNsense, AdGuard, Unbound, Traefik, Twingate, and Tailscale work as distinct layers.</li>
-                            <li>Flow: every path can be drawn, traced, and explained.</li>
-                        </ul>
-                    </article>
-                    <article class="architecture-card mini-card">
-                        <span class="label">Monitoring</span>
-                        <h3>Visibility before guesswork</h3>
-                        <p>Observability turns the lab into a platform: logs, dashboards, and a visible change path.</p>
-                        <ul>
-                            <li>Goals: detect issues early and keep post-change diagnosis simple.</li>
-                            <li>Design: Promtail, Loki, Grafana, and host-level logging sit alongside services.</li>
-                            <li>Flow: app issues should lead to one obvious place to inspect first.</li>
-                        </ul>
-                    </article>
-                    <article class="architecture-card mini-card">
-                        <span class="label">Automation</span>
-                        <h3>Documentation-first operations</h3>
-                        <p>Infrastructure and writeups move together so the portfolio remains honest as the lab evolves.</p>
-                        <ul>
-                            <li>Goals: reduce tribal knowledge and make the next change easier than the last.</li>
-                            <li>Design: IaC, runbooks, and public writing reinforce the same operating model.</li>
-                            <li>Flow: every meaningful change should leave a paper trail.</li>
-                        </ul>
-                    </article>
-                </div>
-            </section>
-
-            <section id="dashboard" class="section-card reveal delay-4">
-                <div class="section-kicker">Infrastructure Dashboard</div>
-                <div class="section-head">
-                    <h2 class="section-title">Infrastructure snapshot.</h2>
-                </div>
-                <div class="dashboard-grid">
-                    <article class="dashboard-card mini-card">
-                        <span class="label">Edge</span>
-                        <div class="dashboard-value">OPNsense</div>
-                        <p>Firewall, gateway, and the front door for remote access paths.</p>
-                    </article>
-                    <article class="dashboard-card mini-card">
-                        <span class="label">Ingress</span>
-                        <div class="dashboard-value">Traefik + Nginx</div>
-                        <p>Reverse proxy layers with explicit routing boundaries.</p>
-                    </article>
-                    <article class="dashboard-card mini-card">
-                        <span class="label">DNS</span>
-                        <div class="dashboard-value">Unbound + AdGuard</div>
-                        <p>Recursive resolution and filtering stay visible and easy to reason about.</p>
-                    </article>
-                    <article class="dashboard-card mini-card">
-                        <span class="label">Observability</span>
-                        <div class="dashboard-value">Promtail + Loki</div>
-                        <p>Log paths, retention, and troubleshooting live beside the stack.</p>
-                    </article>
-                    <article class="dashboard-card mini-card">
-                        <span class="label">Workloads</span>
-                        <div class="dashboard-value">Docker / LXC / VMs</div>
-                        <p>Service placement is split by responsibility, not by convenience.</p>
-                    </article>
-                    <article class="dashboard-card mini-card">
-                        <span class="label">Remote access</span>
-                        <div class="dashboard-value">Twingate + Tailscale</div>
-                        <p>Two access modes, both diagrammed, both intentional.</p>
-                    </article>
-                    <article class="dashboard-card mini-card">
-                        <span class="label">Backup stance</span>
-                        <div class="dashboard-value">Documented</div>
-                        <p>Backups are part of the architecture story, not an afterthought.</p>
-                    </article>
-                    <article class="dashboard-card mini-card">
-                        <span class="label">Source of truth</span>
-                        <div class="dashboard-value">Private runbooks</div>
-                        <p>The public site stays credible by tracing the real lab design back to authoritative notes.</p>
-                    </article>
-                </div>
-            </section>
-
-            <section id="principles" class="section-card reveal delay-4">
-                <div class="section-kicker">Engineering Principles</div>
-                <div class="section-head">
-                    <h2 class="section-title">Short rules that keep the work sane.</h2>
-                </div>
-                <div class="principles-grid">
-                    <article class="principles-card mini-card">
-                        <span class="label">Reproducible</span>
-                        <h3>Infrastructure should be rebuildable.</h3>
-                        <p>If a change cannot be explained or repeated, it is not ready to be trusted.</p>
-                    </article>
-                    <article class="principles-card mini-card">
-                        <span class="label">Automated</span>
-                        <h3>Automation should remove repetitive work.</h3>
-                        <p>Manual steps belong in runbooks only when the task is genuinely rare.</p>
-                    </article>
-                    <article class="principles-card mini-card">
-                        <span class="label">Observable</span>
-                        <h3>Observability is mandatory.</h3>
-                        <p>If a service matters, there should be a clear way to see when it is unhealthy.</p>
-                    </article>
-                    <article class="principles-card mini-card">
-                        <span class="label">Secure</span>
-                        <h3>Security should be designed in.</h3>
-                        <p>Ingress, remote access, and credentials are handled as architecture decisions, not afterthoughts.</p>
-                    </article>
-                    <article class="principles-card mini-card">
-                        <span class="label">Documented</span>
-                        <h3>Documentation is part of the product.</h3>
-                        <p>A system is easier to maintain when the reasoning lives with the implementation.</p>
-                    </article>
-                    <article class="principles-card mini-card">
-                        <span class="label">Simple</span>
-                        <h3>Prefer simplicity over unnecessary complexity.</h3>
-                        <p>Each extra moving piece must earn its place by making the system easier to operate.</p>
-                    </article>
-                </div>
-            </section>
-
             <section id="projects" class="section-card reveal delay-3">
                 <div class="section-kicker">Projects</div>
                 <div class="section-head">
@@ -1169,33 +1033,64 @@
                     <article class="project-card featured">
                         <header>
                             <div>
-                                <span class="label">Self-hosted infrastructure</span>
-                                <h3>Home Server DevOps Lab</h3>
+                                <span class="label">Networking</span>
+                                <h3>Six-VLAN Homelab Segmentation</h3>
                             </div>
                             <div class="project-meta">Status: Active</div>
                         </header>
-                        <p>A long-running home lab that behaves like a small platform engineering environment: ingress, DNS, backups, observability, and service operations.</p>
+                        <p>Segmented a flat home network into six purpose-built VLANs with L3 routing and mixed VLAN-aware/unaware hardware.</p>
                         <div class="project-specs">
                             <div class="spec-line">
                                 <strong>Problem</strong>
-                                <span>Self-hosted services become fragile when ingress, TLS, DNS, backup, and logging are managed independently.</span>
+                                <span>A flat network mixes management, IoT, cameras, and servers into one broadcast domain and blast radius.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Stack</strong>
-                                <span>Docker Compose, Traefik, step-ca, OPNsense, Unbound, AdGuard, Promtail, Loki, Grafana, NFS backups.</span>
+                                <span>GWN7721 managed switch, OPNsense (L3 routing, mDNS repeater), VLAN trunking.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Architecture</strong>
-                                <span>Zero-disruption ingress migration, DNS observability, and platform docs that keep the lab understandable.</span>
+                                <span>Six VLANs (management, trusted/user, servers, cameras/NVR, IoT/HA, guest); native VLAN set on the trunk port so a downstream non-VLAN-aware AP still gets correct untagged traffic and DHCP over a single-cable run.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Impact</strong>
-                                <span>The homelab reads like a real system instead of a pile of services.</span>
+                                <span>Cameras, IoT, and servers now sit in separate failure and trust domains instead of one shared subnet.</span>
                             </div>
                         </div>
                         <div class="card-links">
                             <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub</a>
-                            <a href="https://teckdebate.medium.com/traefik-done-properly-in-a-homelab-nextcloud-home-assistant-reverse-porxy-e41bafbbbcb9" target="_blank" rel="noreferrer">Medium</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card featured">
+                        <header>
+                            <div>
+                                <span class="label">Edge / media</span>
+                                <h3>Frigate NVR on Constrained Hardware</h3>
+                            </div>
+                            <div class="project-meta">Status: Active</div>
+                        </header>
+                        <p>Tuned a 6-camera (targeting 10) Frigate NVR deployment to run reliably on a repurposed consumer laptop.</p>
+                        <div class="project-specs">
+                            <div class="spec-line">
+                                <strong>Problem</strong>
+                                <span>Real-time object detection across multiple camera streams pushes a repurposed laptop GPU and CPU close to their limits.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Stack</strong>
+                                <span>Frigate 0.17, ONNX/GPU detector, go2rtc, ffmpeg, Acer Aspire 7 (GTX 1650 4GB, Ryzen 5 3550H).</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Architecture</strong>
+                                <span>Dual go2rtc streams per camera (full-res record, low-res detect at 640x360/5fps) to cut decode load; fixed detector/ffmpeg config to actually use the GPU; tuned face-recognition thresholds and zone-based alert logic.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Impact</strong>
+                                <span>Stable multi-camera detection and identity-aware alerting on hardware never meant for an NVR workload.</span>
+                            </div>
+                        </div>
+                        <div class="card-links">
+                            <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub</a>
                         </div>
                     </article>
 
@@ -1235,33 +1130,29 @@
                     <article class="project-card">
                         <header>
                             <div>
-                                <span class="label">Automation</span>
-                                <h3>Terraform Docs and IaC Hygiene</h3>
+                                <span class="label">Developer tooling</span>
+                                <h3>Local + Remote AI Coding Pipeline</h3>
                             </div>
-                            <div class="project-meta">Status: Supporting</div>
+                            <div class="project-meta">Status: Active</div>
                         </header>
-                        <p>Docs belong with IaC, not after it.</p>
+                        <p>A hybrid local/remote LLM coding setup built to work across large multi-repo JS/TS/Python codebases.</p>
                         <div class="project-specs">
                             <div class="spec-line">
                                 <strong>Problem</strong>
-                                <span>Terraform modules and supporting code drift without readable documentation and repeatable structure.</span>
+                                <span>A single model or provider isn't reliable enough for daily coding work across memory limits, rate limits, and repo size.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Stack</strong>
-                                <span>Terraform, markdown documentation, module READMEs, repo hygiene.</span>
+                                <span>mlx-lm on Apple Silicon, GitNexus (MCP), Continue.dev, Aider, Repomix, Groq/Qwen3-32B and OpenRouter as remote fallbacks.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Architecture</strong>
-                                <span>Docs generated or maintained alongside code so the repository explains itself.</span>
+                                <span>Local Qwen 2.5 Coder 14B alongside GitHub Copilot with mid-session switching from the same codebase state; custom prompt-refinement agents run ahead of API calls after 14B OOM crashes forced a pivot to free remote APIs.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Impact</strong>
-                                <span>Turns infrastructure code into something the next engineer can safely extend.</span>
+                                <span>A coding workflow that keeps working whether the model is local, rate-limited, or swapped out mid-task.</span>
                             </div>
-                        </div>
-                        <div class="card-links">
-                            <a href="https://github.com/AcidBurn18/Terraform" target="_blank" rel="noreferrer">GitHub</a>
-                            <a href="https://teckdebate.medium.com/terraform-docs-tutorial-generate-readmes-for-your-modules-412597aa351a" target="_blank" rel="noreferrer">Medium</a>
                         </div>
                     </article>
 
