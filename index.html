@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ansh Agrawal is a Platform Engineer focused on cloud infrastructure, Kubernetes, Azure landing zones, infrastructure as code, GitOps, and self-hosted platforms.">
+    <meta name="description" content="Ansh Agrawal - Platform Engineer focused on cloud infrastructure, Kubernetes, self-hosted platforms, multimodal RAG copilots, and network reliability.">
     <meta name="theme-color" content="#f4efe5">
-    <title>Ansh Agrawal | Platform Engineer</title>
+    <title>Ansh Agrawal | Platform & Infrastructure Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #f4efe5;
             --bg-alt: #efe6d8;
-            --paper: rgba(255, 251, 245, 0.9);
-            --paper-strong: rgba(255, 255, 255, 0.74);
+            --paper: rgba(255, 251, 245, 0.92);
+            --paper-strong: rgba(255, 255, 255, 0.85);
             --ink: #172126;
             --muted: #55636b;
             --line: rgba(23, 33, 38, 0.12);
@@ -20,13 +23,13 @@
             --accent-soft: #d7efe8;
             --warm: #b45309;
             --warm-soft: #f8e7cd;
-            --shadow: 0 20px 60px rgba(44, 62, 80, 0.12);
-            --shadow-soft: 0 12px 32px rgba(44, 62, 80, 0.08);
-            --radius-xl: 30px;
-            --radius-lg: 24px;
-            --radius-md: 18px;
-            --radius-sm: 14px;
-            --max: 1180px;
+            --shadow: 0 20px 60px rgba(44, 62, 80, 0.1);
+            --shadow-soft: 0 10px 28px rgba(44, 62, 80, 0.06);
+            --radius-xl: 28px;
+            --radius-lg: 20px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --max: 1140px;
         }
 
         * {
@@ -40,15 +43,17 @@
         body {
             margin: 0;
             color: var(--ink);
-            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background:
-                radial-gradient(circle at top left, rgba(15, 118, 110, 0.14), transparent 28%),
-                radial-gradient(circle at top right, rgba(180, 83, 9, 0.12), transparent 24%),
+                radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 30%),
+                radial-gradient(circle at top right, rgba(180, 83, 9, 0.1), transparent 26%),
                 linear-gradient(180deg, #fbf7ef 0%, #f3ecdf 100%);
+            background-attachment: fixed;
         }
 
         a {
             color: inherit;
+            text-decoration: none;
         }
 
         img {
@@ -75,7 +80,15 @@
         .page {
             width: min(calc(100% - 32px), var(--max));
             margin: 0 auto;
-            padding: 22px 0 60px;
+            padding: 16px 0 60px;
+        }
+
+        /* Sticky Blur Topbar */
+        .topbar-wrapper {
+            position: sticky;
+            top: 12px;
+            z-index: 100;
+            margin-bottom: 24px;
         }
 
         .topbar {
@@ -83,64 +96,78 @@
             justify-content: space-between;
             align-items: center;
             gap: 16px;
-            padding: 10px 0 26px;
+            padding: 12px 24px;
+            background: rgba(255, 251, 245, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            box-shadow: var(--shadow-soft);
         }
 
         .brand {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 2px;
         }
 
         .brand strong {
-            font-size: 0.95rem;
-            letter-spacing: 0.18em;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.05rem;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
+            color: var(--ink);
         }
 
         .brand span {
             color: var(--muted);
-            font-size: 0.94rem;
+            font-size: 0.85rem;
         }
 
         .nav-links {
             display: flex;
             flex-wrap: wrap;
-            justify-content: flex-end;
-            gap: 14px;
+            align-items: center;
+            gap: 6px;
         }
 
         .nav-links a {
-            text-decoration: none;
             color: var(--muted);
-            font-size: 0.95rem;
-            padding: 8px 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 8px 14px;
             border-radius: 999px;
-            transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+            transition: all 200ms ease;
         }
 
         .nav-links a:hover,
         .nav-links a:focus-visible {
-            background: rgba(255, 255, 255, 0.7);
-            color: var(--ink);
-            transform: translateY(-1px);
+            background: rgba(15, 118, 110, 0.1);
+            color: var(--accent-strong);
             outline: none;
+        }
+
+        /* Sections & Cards */
+        .sections {
+            display: grid;
+            gap: 32px;
         }
 
         .hero,
         .section-card {
             background: var(--paper);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--line);
             box-shadow: var(--shadow);
+            border-radius: var(--radius-xl);
+            padding: 32px;
         }
 
         .hero {
             display: grid;
-            grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-            gap: 22px;
-            border-radius: var(--radius-xl);
-            padding: 36px;
+            grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+            gap: 28px;
             align-items: stretch;
         }
 
@@ -149,45 +176,42 @@
             align-items: center;
             gap: 8px;
             margin-bottom: 16px;
-            padding: 8px 12px;
+            padding: 6px 14px;
             border-radius: 999px;
             background: var(--accent-soft);
             color: var(--accent-strong);
-            font-size: 0.8rem;
-            font-weight: 800;
-            letter-spacing: 0.08em;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
         }
 
         .eyebrow::before {
             content: "";
-            width: 8px;
-            height: 8px;
+            width: 7px;
+            height: 7px;
             border-radius: 999px;
             background: var(--accent);
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        p {
+        h1, h2, h3, h4, p {
             margin: 0;
         }
 
         h1 {
-            font-size: clamp(2.7rem, 6vw, 5.5rem);
-            line-height: 0.95;
-            letter-spacing: -0.05em;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.4rem, 5vw, 4.2rem);
+            line-height: 1.02;
+            letter-spacing: -0.04em;
             margin-bottom: 18px;
-            max-width: 11ch;
+            color: var(--ink);
         }
 
         .hero-copy p {
-            max-width: 66ch;
+            max-width: 62ch;
             color: var(--muted);
-            font-size: 1.07rem;
-            line-height: 1.75;
+            font-size: 1.05rem;
+            line-height: 1.7;
             margin-bottom: 24px;
         }
 
@@ -197,584 +221,531 @@
             gap: 12px;
         }
 
-        .button,
-        .button-secondary,
-        .inline-link {
+        .button {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            min-height: 46px;
-            padding: 0 18px;
+            gap: 8px;
+            padding: 12px 22px;
             border-radius: 999px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, color 180ms ease;
-        }
-
-        .button {
-            background: var(--accent);
+            background: var(--accent-strong);
             color: #fff;
-            box-shadow: 0 10px 30px rgba(15, 118, 110, 0.22);
+            font-size: 0.92rem;
+            font-weight: 600;
+            transition: all 200ms ease;
+            box-shadow: 0 4px 14px rgba(15, 118, 110, 0.25);
         }
 
-        .button-secondary,
-        .inline-link {
-            background: rgba(255, 255, 255, 0.7);
-            color: var(--ink);
-            border: 1px solid var(--line);
-        }
-
-        .button:hover,
-        .button-secondary:hover,
-        .inline-link:hover,
-        .button:focus-visible,
-        .button-secondary:focus-visible,
-        .inline-link:focus-visible {
+        .button:hover {
+            background: var(--accent);
             transform: translateY(-2px);
-            outline: none;
+            box-shadow: 0 6px 20px rgba(15, 118, 110, 0.35);
+        }
+
+        .button-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--line);
+            color: var(--ink);
+            font-size: 0.92rem;
+            font-weight: 600;
+            transition: all 200ms ease;
+        }
+
+        .button-secondary:hover {
+            background: #fff;
+            border-color: var(--accent);
+            color: var(--accent-strong);
+            transform: translateY(-2px);
         }
 
         .hero-panel {
-            border-radius: var(--radius-lg);
-            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
             background: rgba(255, 255, 255, 0.55);
             border: 1px solid var(--line);
-            display: grid;
-            gap: 14px;
-        }
-
-        .hero-stat {
-            padding: 16px 0;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .hero-stat:last-child {
-            border-bottom: 0;
-            padding-bottom: 2px;
-        }
-
-        .stat-label {
-            display: inline-block;
-            margin-bottom: 8px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            background: var(--warm-soft);
-            color: #8f5205;
-            font-size: 0.76rem;
-            font-weight: 800;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .hero-stat strong,
-        .mini-card h3,
-        .project-card h3,
-        .article-card h3,
-        .repo-card h3,
-        .cert-card h3 {
-            display: block;
-            font-size: 1.18rem;
-            line-height: 1.2;
-            margin-bottom: 8px;
-        }
-
-        .hero-stat p,
-        .mini-card p,
-        .project-card p,
-        .article-card p,
-        .repo-card p,
-        .cert-card p,
-        .section-intro,
-        .summary-copy p,
-        .contact-copy p {
-            color: var(--muted);
-            line-height: 1.7;
-        }
-
-        .sections {
-            display: grid;
-            gap: 24px;
-            margin-top: 24px;
-        }
-
-        .section-card {
-            border-radius: var(--radius-xl);
-            padding: 32px;
-        }
-
-        .section-head {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 12px;
-            align-items: end;
-            margin-bottom: 18px;
-        }
-
-        .section-kicker {
-            color: var(--warm);
-            font-size: 0.82rem;
-            font-weight: 800;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .section-title {
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            letter-spacing: -0.03em;
-        }
-
-        .section-intro,
-        .summary-copy p,
-        .contact-copy p {
-            max-width: 76ch;
-            margin-top: 8px;
-        }
-
-        .summary-layout {
-            display: grid;
-            grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
-            gap: 18px;
-            align-items: start;
-        }
-
-        .summary-copy {
-            display: grid;
-            gap: 14px;
-        }
-
-        .summary-copy p {
-            font-size: 1.03rem;
-        }
-
-        .theme-grid,
-        .skill-groups,
-        .project-grid,
-        .article-grid,
-        .repo-grid,
-        .cert-grid,
-        .mini-grid,
-        .contact-grid {
-            display: grid;
-            gap: 16px;
-        }
-
-        .theme-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .mini-card,
-        .project-card,
-        .article-card,
-        .repo-card,
-        .cert-card {
-            background: var(--paper-strong);
-            border: 1px solid var(--line);
             border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .mini-card {
-            padding: 18px;
-        }
-
-        .mini-card .label,
-        .project-card .label,
-        .article-card .label,
-        .repo-card .label,
-        .cert-card .label {
-            display: inline-flex;
-            width: fit-content;
-            margin-bottom: 10px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            background: var(--accent-soft);
-            color: var(--accent-strong);
-            font-size: 0.75rem;
-            font-weight: 800;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .pill-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 6px;
-        }
-
-        .pill {
-            padding: 10px 13px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.72);
-            border: 1px solid var(--line);
-            color: var(--ink);
-            font-size: 0.94rem;
-        }
-
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 16px;
-        }
-
-        .mini-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            margin-top: 14px;
-        }
-
-        .project-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .article-grid,
-        .repo-grid,
-        .cert-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .project-card,
-        .article-card,
-        .repo-card,
-        .cert-card {
             padding: 22px;
         }
 
-        .project-card.featured {
-            grid-column: span 2;
-        }
-
-        .project-card header,
-        .article-card header,
-        .repo-card header,
-        .cert-card header {
+        .hero-stat {
             display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            align-items: flex-start;
-            margin-bottom: 14px;
+            flex-direction: column;
+            gap: 4px;
         }
 
-        .project-meta,
-        .article-meta,
-        .repo-meta,
-        .cert-meta {
+        .hero-stat + .hero-stat {
+            padding-top: 14px;
+            border-top: 1px solid var(--line);
+        }
+
+        .stat-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .hero-stat strong {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .hero-stat p {
+            font-size: 0.88rem;
             color: var(--muted);
-            font-size: 0.92rem;
             line-height: 1.5;
         }
 
-        .project-specs,
-        .article-specs,
-        .repo-specs,
-        .cert-specs {
+        /* Section Titles */
+        .section-kicker {
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        .section-head {
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* About & Experience Grid */
+        .about-grid {
             display: grid;
-            gap: 10px;
-            margin: 16px 0 18px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .mini-card {
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: all 200ms ease;
+        }
+
+        .mini-card:hover {
+            background: #fff;
+            border-color: rgba(15, 118, 110, 0.3);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .label {
+            display: inline-block;
+            align-self: flex-start;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: var(--warm-soft);
+            color: var(--warm);
+        }
+
+        .label.tech {
+            background: var(--accent-soft);
+            color: var(--accent-strong);
+        }
+
+        .mini-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        /* Project Specs Lines */
+        .project-specs {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.9rem;
         }
 
         .spec-line {
             display: grid;
-            grid-template-columns: 124px minmax(0, 1fr);
+            grid-template-columns: 105px 1fr;
             gap: 12px;
-            align-items: start;
+            line-height: 1.55;
         }
 
         .spec-line strong {
-            font-size: 0.84rem;
+            color: var(--ink);
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--warm);
-            padding-top: 2px;
+            letter-spacing: 0.04em;
         }
 
-        .spec-line span,
-        .spec-line p {
+        .spec-line span {
             color: var(--muted);
-            line-height: 1.65;
         }
 
-        .card-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .card-links a {
-            padding: 9px 12px;
-            border-radius: 999px;
-            text-decoration: none;
-            border: 1px solid var(--line);
-            background: rgba(255, 255, 255, 0.7);
-            font-weight: 700;
-            color: var(--ink);
-            transition: transform 180ms ease, background 180ms ease;
-        }
-
-        .card-links a:hover,
-        .card-links a:focus-visible {
-            transform: translateY(-1px);
-            outline: none;
-            background: #fff;
-        }
-
-        .skill-groups {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .skill-group {
-            padding: 18px;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--line);
-            background: rgba(255, 255, 255, 0.64);
-        }
-
-        .skill-group h3 {
-            margin-bottom: 10px;
-            font-size: 1.05rem;
-        }
-
-        .section-divider {
-            height: 1px;
-            background: var(--line);
-            margin: 2px 0 0;
-        }
-
-        .contact-layout {
-            display: grid;
-            grid-template-columns: minmax(0, 0.9fr) minmax(300px, 1.1fr);
-            gap: 18px;
-            align-items: start;
-        }
-
-        .contact-cta {
-            padding: 22px;
-            border-radius: var(--radius-lg);
-            background: linear-gradient(180deg, rgba(15, 118, 110, 0.12), rgba(15, 118, 110, 0.04));
-            border: 1px solid rgba(15, 118, 110, 0.16);
-        }
-
-        .contact-cta h3 {
-            font-size: 1.45rem;
-            line-height: 1.2;
-            margin-bottom: 10px;
-        }
-
-        .contact-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .contact-card {
-            padding: 18px;
-            border-radius: var(--radius-lg);
-            background: rgba(255, 255, 255, 0.72);
-            border: 1px solid var(--line);
-        }
-
-        .contact-card strong {
-            display: block;
-            margin-bottom: 6px;
-        }
-
-        .contact-card span,
-        .contact-card a {
-            color: var(--muted);
-            text-decoration: none;
-            line-height: 1.6;
-        }
-
-        .contact-card a:hover,
-        .contact-card a:focus-visible {
-            color: var(--ink);
-            outline: none;
-        }
-
-        .case-study-grid {
+        /* Architecture Grid */
+        .architecture-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 16px;
+            gap: 20px;
         }
 
         .case-study-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            padding: 0;
-            display: grid;
+            display: flex;
+            flex-direction: column;
+            transition: all 200ms ease;
+        }
+
+        .case-study-card:hover {
+            background: #fff;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-soft);
+            border-color: rgba(15, 118, 110, 0.35);
         }
 
         .case-study-card figure {
             margin: 0;
             padding: 16px 16px 0;
+            background: #faf7f2;
         }
 
         .case-study-card img {
             width: 100%;
-            border-radius: 18px;
-            border: 1px solid var(--line);
-            box-shadow: var(--shadow-soft);
-            background: #fff;
+            height: 200px;
             object-fit: contain;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--line);
+            background: #fff;
         }
 
         .case-study-body {
-            padding: 18px 18px 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex-grow: 1;
+        }
+
+        .case-study-body h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.12rem;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        .card-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 6px;
+        }
+
+        .card-links a {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-strong);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            transition: color 150ms ease;
+        }
+
+        .card-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Projects Section */
+        .project-grid {
             display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: all 200ms ease;
+        }
+
+        .project-card.featured {
+            grid-column: span 2;
+            background: #fff;
+            border-color: rgba(15, 118, 110, 0.25);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+            border-color: rgba(15, 118, 110, 0.4);
+        }
+
+        .project-card header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             gap: 12px;
         }
 
-        .case-study-body p {
-            color: var(--muted);
-            line-height: 1.7;
+        .project-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 4px;
         }
 
-        .architecture-grid {
+        .project-meta {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(15, 118, 110, 0.1);
+            color: var(--accent-strong);
+            white-space: nowrap;
+        }
+
+        .project-card > p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Writing Groups & Articles */
+        .writing-group {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .writing-group + .writing-group {
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 1px solid var(--line);
+        }
+
+        .writing-group h3.sub-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .article-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 16px;
         }
 
-        .architecture-card {
-            padding: 22px;
+        .article-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 14px;
+            transition: all 200ms ease;
         }
 
-        .architecture-card ul {
-            margin: 14px 0 0;
-            padding-left: 18px;
+        .article-card:hover {
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-soft);
+            border-color: rgba(15, 118, 110, 0.3);
+        }
+
+        .article-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-top: 6px;
+        }
+
+        .article-meta {
+            font-size: 0.78rem;
             color: var(--muted);
-            line-height: 1.7;
+            margin-top: 4px;
         }
 
-        .dashboard-grid {
+        .article-card p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        /* Skills Groups */
+        .skill-groups {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
         }
 
-        .dashboard-card {
+        .skill-group {
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
             padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        .dashboard-value {
-            font-size: 1.7rem;
-            font-weight: 800;
-            line-height: 1.1;
+        .skill-group h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: var(--ink);
+        }
+
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .pill {
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 5px 11px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--line);
+            color: var(--ink);
+        }
+
+        .pill.featured-pill {
+            background: var(--accent-soft);
+            color: var(--accent-strong);
+            border-color: rgba(15, 118, 110, 0.2);
+        }
+
+        /* Contact Layout */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+            gap: 24px;
+            align-items: center;
+        }
+
+        .contact-cta h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
             margin-bottom: 8px;
         }
 
-        .writing-group {
-            display: grid;
-            gap: 16px;
-            margin-top: 18px;
+        .contact-cta p {
+            color: var(--muted);
+            line-height: 1.6;
         }
 
-        .principles-grid {
+        .contact-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
         }
 
-        .principles-card {
-            padding: 18px;
+        .contact-card {
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .contact-card strong {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+        }
+
+        .contact-card a, .contact-card span {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-strong);
+            word-break: break-all;
         }
 
         .footer {
-            padding: 28px 4px 8px;
+            padding: 24px 4px 8px;
             text-align: center;
             color: var(--muted);
-            font-size: 0.94rem;
+            font-size: 0.88rem;
         }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(18px);
-            animation: reveal 700ms ease forwards;
-        }
-
-        .delay-1 { animation-delay: 120ms; }
-        .delay-2 { animation-delay: 240ms; }
-        .delay-3 { animation-delay: 360ms; }
-        .delay-4 { animation-delay: 480ms; }
-        .delay-5 { animation-delay: 600ms; }
-
-        @keyframes reveal {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 1024px) {
+        /* Responsive Breakpoints */
+        @media (max-width: 960px) {
             .hero,
-            .summary-layout,
-            .contact-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .experience-grid,
+            .architecture-grid,
+            .about-grid,
             .project-grid,
             .article-grid,
-            .repo-grid,
-            .cert-grid,
             .skill-groups,
-            .contact-grid,
-            .theme-grid,
-            .case-study-grid,
-            .architecture-grid,
-            .dashboard-grid,
-            .principles-grid {
+            .contact-layout {
                 grid-template-columns: 1fr;
             }
 
             .project-card.featured {
                 grid-column: span 1;
             }
-
-            .mini-grid {
-                grid-template-columns: 1fr;
-            }
-
         }
 
         @media (max-width: 640px) {
-            .page {
-                width: min(calc(100% - 18px), var(--max));
-            }
-
             .topbar {
                 flex-direction: column;
                 align-items: flex-start;
+                border-radius: var(--radius-lg);
+                padding: 14px 18px;
             }
 
             .nav-links {
                 justify-content: flex-start;
             }
 
-            .hero,
-            .section-card {
+            .hero, .section-card {
                 padding: 22px;
-            }
-
-            h1 {
-                font-size: 2.8rem;
             }
 
             .spec-line {
                 grid-template-columns: 1fr;
-                gap: 4px;
+                gap: 2px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { transition: none !important; }
         }
     </style>
 </head>
@@ -782,161 +753,125 @@
     <a class="skip-link" href="#content">Skip to content</a>
 
     <div class="page">
-        <nav class="topbar reveal">
-            <div class="brand">
-                <strong>Ansh Agrawal</strong>
-                <span>Platform Engineer • Cloud Infrastructure • Self-Hosted Systems</span>
-            </div>
-            <div class="nav-links" aria-label="Primary navigation">
-                <a href="#summary">Summary</a>
-                <a href="#experience">Experience</a>
-                <a href="#architecture">Architecture</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#writing">Writing</a>
-                <a href="#certifications">Certifications</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </nav>
+        <!-- Sticky Blur Navigation -->
+        <div class="topbar-wrapper">
+            <nav class="topbar" aria-label="Primary navigation">
+                <div class="brand">
+                    <strong>Ansh Agrawal</strong>
+                    <span>Platform Engineer • Infrastructure & AI Systems</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#architecture">Architecture</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#writing">Writing</a>
+                    <a href="#skills">Skills & Certs</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
 
-        <header class="hero reveal delay-1">
+        <!-- Hero Section -->
+        <header class="hero">
             <div class="hero-copy">
-                <span class="eyebrow">Operator-first Infrastructure</span>
+                <span class="eyebrow">Operator-First Infrastructure & AI Systems</span>
                 <h1>Engineered reliability, not résumé copy.</h1>
                 <p>
-                    I design and run infrastructure that has to stay understandable under load: self-hosted platforms,
-                    ingress, DNS, backups, observability, and cloud foundations with clear change paths. The portfolio
-                    shows real operational work, not placeholder projects.
+                    I design and run infrastructure that stays understandable under load: self-hosted platforms,
+                    multimodal RAG copilots, ingress, DNS, observability pipelines, and cloud foundations with clear change paths.
+                    Every component here represents real operational work, not placeholder projects.
                 </p>
                 <div class="hero-actions">
-                    <a class="button" href="#projects">See projects</a>
-                    <a class="button-secondary" href="https://teckdebate.medium.com/" target="_blank" rel="noreferrer">Read Medium</a>
+                    <a class="button" href="#projects">Explore Projects</a>
+                    <a class="button-secondary" href="https://teckdebate.medium.com/" target="_blank" rel="noreferrer">Read Medium Articles</a>
                 </div>
             </div>
             <aside class="hero-panel" aria-label="Portfolio highlights">
                 <div class="hero-stat">
                     <span class="stat-label">Focus</span>
-                    <strong>Platform engineering</strong>
-                    <p>Reliability, automation, and change control across cloud and self-hosted systems.</p>
+                    <strong>Platform & AI Engineering</strong>
+                    <p>Reliability, vector retrieval (RAG), and change control across cloud & self-hosted systems.</p>
                 </div>
                 <div class="hero-stat">
                     <span class="stat-label">Proof</span>
-                    <strong>Real homelab operations</strong>
-                    <p>Ingress, DNS, backups, observability, and long-lived service ownership in practice.</p>
+                    <strong>Real Homelab Operations & RAG</strong>
+                    <p>Multimodal vector search, OPNsense routing, Frigate NVR, and long-lived service ownership.</p>
                 </div>
                 <div class="hero-stat">
                     <span class="stat-label">Signal</span>
-                    <strong>Public technical writing</strong>
-                    <p>Medium articles translate the same infrastructure themes into clear, evidence-backed writeups.</p>
+                    <strong>Technical Writing on Medium</strong>
+                    <p>Detailed technical writeups translating production incidents into clear, reproducible guides.</p>
                 </div>
             </aside>
         </header>
 
-        <main id="content" class="sections">
-            <section id="summary" class="section-card reveal delay-2">
-                <div class="section-kicker">Summary</div>
+        <main id="content" class="sections" style="margin-top: 32px;">
+            <!-- About & Experience -->
+            <section id="about" class="section-card">
+                <div class="section-kicker">About & Impact</div>
                 <div class="section-head">
-                    <h2 class="section-title">A platform-engineering portfolio built from real systems.</h2>
+                    <h2 class="section-title">Standardizing foundations, automating change, proving patterns.</h2>
                 </div>
-                <div class="summary-layout">
-                    <div class="summary-copy">
-                        <p>
-                            I standardize the foundation, automate the change path, keep failure domains small, and document the result.
-                        </p>
-                        <p>
-                            The homelab docs and Medium posts show the same operating style in public and private form.
-                        </p>
-                        <p class="principles-line">
-                            Reproducible, automated, observable, and documented — every extra moving piece has to earn its place.
-                        </p>
-                    </div>
-                    <div class="theme-grid" aria-label="Primary themes">
-                        <div class="mini-card">
-                            <span class="label">Cloud</span>
-                            <h3>Azure landing zones</h3>
-                            <p>Structured foundations, documented decisions, and practical platform patterns.</p>
-                        </div>
-                        <div class="mini-card">
-                            <span class="label">Automation</span>
-                            <h3>Infrastructure as code</h3>
-                            <p>Terraform, module docs, and repeatable delivery workflows.</p>
-                        </div>
-                        <div class="mini-card">
-                            <span class="label">Operations</span>
-                            <h3>Observability and backup</h3>
-                            <p>DNS telemetry, log pipelines, and disaster-recovery-first thinking.</p>
-                        </div>
-                        <div class="mini-card">
-                            <span class="label">Self-hosted</span>
-                            <h3>Real services, real ownership</h3>
-                            <p>Ingress, DNS, media automation, and long-lived platform maintenance.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="experience" class="section-card reveal delay-3">
-                <div class="section-kicker">Experience</div>
-                <div class="section-head">
-                    <h2 class="section-title">Problem → solution → impact.</h2>
-                </div>
-                <div class="experience-grid">
+                <div class="about-grid">
                     <article class="mini-card">
-                        <span class="label">Current role</span>
+                        <span class="label">Current Role</span>
                         <h3>DevOps Engineer, HashedIn by Deloitte</h3>
                         <div class="project-specs">
                             <div class="spec-line">
                                 <strong>Problem</strong>
-                                <span>Keep cloud and platform delivery repeatable, secure, and easy to hand off.</span>
+                                <span>Keep cloud and platform delivery repeatable, secure, and easy to hand off without tribal knowledge.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Solution</strong>
-                                <span>Cloud infrastructure, Kubernetes, automation, documentation-first delivery.</span>
+                                <span>Cloud infrastructure, Kubernetes, automation runbooks, and documentation-first delivery.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Impact</strong>
-                                <span>Cleaner change flow and less tribal knowledge.</span>
+                                <span>Cleaner change flow, automated CI/CD pipelines, and reduced operational complexity.</span>
                             </div>
                         </div>
                     </article>
+
                     <article class="mini-card">
-                        <span class="label">Independent practice</span>
-                        <h3>Homelab and platform engineering</h3>
+                        <span class="label tech">Independent Practice</span>
+                        <h3>Homelab & AI Platform Engineering</h3>
                         <div class="project-specs">
                             <div class="spec-line">
                                 <strong>Problem</strong>
-                                <span>Self-hosted platforms fail fast when ingress, DNS, backups, and observability drift.</span>
+                                <span>Self-hosted services fail fast when ingress, DNS, backups, telemetry, and vector retrieval drift.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Solution</strong>
-                                <span>Traefik, step-ca, OPNsense, DNS observability, backups, staged automation.</span>
+                                <span>Qdrant vector search, Frigate object detection, Traefik, OPNsense NAT routing, and staged automation.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Impact</strong>
-                                <span>A proving ground for production-grade patterns.</span>
+                                <span>A battle-tested proving ground for production-grade network and AI infrastructure.</span>
                             </div>
                         </div>
                     </article>
                 </div>
             </section>
 
-            <section id="architecture" class="section-card reveal delay-3">
-                <div class="section-kicker">Architecture</div>
+            <!-- Architecture Section -->
+            <section id="architecture" class="section-card">
+                <div class="section-kicker">Architecture Case Studies</div>
                 <div class="section-head">
-                    <h2 class="section-title">The homelab as one system.</h2>
+                    <h2 class="section-title">The homelab as one cohesive system.</h2>
                 </div>
-                <div class="case-study-grid">
+                <div class="architecture-grid">
+                    <!-- Case Study 1: Network Flow -->
                     <article class="case-study-card">
                         <figure>
-                            <img src="assets/phase2/network-flow.png" alt="Network flow diagram showing OPNsense, AdGuard, Twingate, Tailscale, Nginx reverse proxy, and the HomeServer Docker stack.">
+                            <img src="assets/phase2/network-flow.png" alt="Network flow diagram showing OPNsense, AdGuard, Twingate, Tailscale, Nginx reverse proxy, and Docker stack.">
                         </figure>
                         <div class="case-study-body">
-                            <span class="label">Network flow</span>
-                            <h3>Ingress, DNS, and remote access as one system</h3>
+                            <span class="label">Ingress & Remote Access</span>
+                            <h3>Network Flow & Ingress Topology</h3>
                             <div class="project-specs">
                                 <div class="spec-line">
                                     <strong>Problem</strong>
-                                    <span>Remote access had to stay clear and debuggable across local browsing, VPN access, and public ingress.</span>
+                                    <span>Remote access had to stay clear and debuggable across local browsing, Tailscale VPN, and public ingress.</span>
                                 </div>
                                 <div class="spec-line">
                                     <strong>Stack</strong>
@@ -944,93 +879,133 @@
                                 </div>
                                 <div class="spec-line">
                                     <strong>Architecture</strong>
-                                    <span>Split the traffic planes so DNS, app routing, and remote access can be reasoned about independently.</span>
+                                    <span>Traffic planes are split so DNS resolution, app reverse proxying, and remote access operate independently.</span>
                                 </div>
                                 <div class="spec-line">
                                     <strong>Result</strong>
-                                    <span>Cleaner troubleshooting and a better story for how the homelab is actually reached.</span>
+                                    <span>Deterministic troubleshooting, zero subnet overlap conflicts, and clean ingress routing.</span>
                                 </div>
                             </div>
                             <div class="card-links">
-                                <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub</a>
-                                <a href="https://teckdebate.medium.com/traefik-done-properly-in-a-homelab-nextcloud-home-assistant-reverse-porxy-e41bafbbbcb9" target="_blank" rel="noreferrer">Medium</a>
+                                <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub Repo</a>
+                                <a href="https://teckdebate.medium.com/traefik-done-properly-in-a-homelab-nextcloud-home-assistant-reverse-porxy-e41bafbbbcb9" target="_blank" rel="noreferrer">Medium Article</a>
                             </div>
                         </div>
                     </article>
 
+                    <!-- Case Study 2: Service Topology -->
                     <article class="case-study-card">
                         <figure>
-                            <img src="assets/phase2/service-topology.png" alt="Service topology diagram showing Proxmox hosts, VMs, LXCs, Docker workloads, and supporting devices across the home server stack.">
+                            <img src="assets/phase2/service-topology.png" alt="Service topology diagram showing Proxmox hosts, VMs, LXCs, and Docker workloads.">
                         </figure>
                         <div class="case-study-body">
-                            <span class="label">Service topology</span>
-                            <h3>Hosts, VMs, LXCs, and containerized workloads</h3>
+                            <span class="label">Workload Placement</span>
+                            <h3>Hosts, VMs, LXCs & Docker Workloads</h3>
                             <div class="project-specs">
                                 <div class="spec-line">
                                     <strong>Problem</strong>
-                                    <span>A homelab reads like clutter unless the control plane, utility services, and app workloads are grouped by host.</span>
+                                    <span>A multi-node homelab becomes chaotic unless control plane, utility services, and media apps are cleanly grouped.</span>
                                 </div>
                                 <div class="spec-line">
                                     <strong>Stack</strong>
-                                    <span>Proxmox, Ubuntu Server, Docker, Home Assistant, Jellyfin, Nextcloud, observability services.</span>
+                                    <span>Proxmox VE, Ubuntu Server, Docker, Home Assistant, Jellyfin, Nextcloud, Grafana Loki.</span>
                                 </div>
                                 <div class="spec-line">
                                     <strong>Architecture</strong>
-                                    <span>Separate edge, observability, productivity, media, and auxiliary tasks so failure domains stay visible.</span>
+                                    <span>Isolate edge ingress, telemetry, storage, and media workloads so hardware failure domains stay isolated.</span>
                                 </div>
                                 <div class="spec-line">
                                     <strong>Result</strong>
-                                    <span>The diagram makes placement decisions obvious and keeps service ownership readable.</span>
+                                    <span>Transparent placement decisions, explicit resource allocation, and zero host-level sprawl.</span>
                                 </div>
                             </div>
                             <div class="card-links">
-                                <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub</a>
-                                <a href="https://teckdebate.medium.com/tailscale-on-proxmox-solving-the-udp-gro-forwarding-warning-765f56771509" target="_blank" rel="noreferrer">Medium</a>
+                                <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub Repo</a>
+                                <a href="https://teckdebate.medium.com/tailscale-on-proxmox-solving-the-udp-gro-forwarding-warning-765f56771509" target="_blank" rel="noreferrer">Medium Article</a>
                             </div>
                         </div>
                     </article>
 
+                    <!-- Case Study 3: Virtual Networking -->
                     <article class="case-study-card">
                         <figure>
-                            <img src="assets/phase2/network-topology.png" alt="Virtual networking diagram showing Proxmox bridges, tap and veth pairs, Docker custom bridge, and NAT forwarding boundaries.">
+                            <img src="assets/phase2/network-topology.png" alt="Virtual networking diagram showing Proxmox bridges, TAP/VETH pairs, and Docker custom bridges.">
                         </figure>
                         <div class="case-study-body">
-                            <span class="label">Virtual networking</span>
-                            <h3>Bridges, NAT, and container networking boundaries</h3>
+                            <span class="label">L2 / L3 Boundaries</span>
+                            <h3>Bridges, NAT & Container Networking</h3>
                             <div class="project-specs">
                                 <div class="spec-line">
                                     <strong>Problem</strong>
-                                    <span>Physical links, Proxmox bridges, and container namespaces can blur together without a clean layer model.</span>
+                                    <span>Physical NICs, Proxmox bridges, and container namespaces can blur together without an explicit layer model.</span>
                                 </div>
                                 <div class="spec-line">
                                     <strong>Stack</strong>
-                                    <span>Proxmox vmbr0, tap devices, veth pairs, Docker custom bridge, iptables / netfilter, Linux namespaces.</span>
+                                    <span>Proxmox vmbr0, TAP devices, VETH pairs, Docker custom bridge, netfilter/iptables, Linux namespaces.</span>
                                 </div>
                                 <div class="spec-line">
                                     <strong>Architecture</strong>
-                                    <span>Show the path from physical NIC to bridge to workload so L2 and L3 responsibilities stay separated.</span>
+                                    <span>Map the path from physical NIC to bridge to workload namespace so L2 bridging and L3 routing stay separate.</span>
                                 </div>
                                 <div class="spec-line">
                                     <strong>Result</strong>
-                                    <span>The network story becomes a diagram you can inspect instead of a pile of assumptions.</span>
+                                    <span>Clear packet traversal diagrams for network diagnostics and secure VLAN trunking.</span>
                                 </div>
                             </div>
                             <div class="card-links">
-                                <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub</a>
-                                <a href="https://teckdebate.medium.com/traefik-done-properly-in-a-homelab-nextcloud-home-assistant-reverse-porxy-e41bafbbbcb9" target="_blank" rel="noreferrer">Medium</a>
+                                <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub Repo</a>
                             </div>
                         </div>
                     </article>
                 </div>
             </section>
 
-            <section id="projects" class="section-card reveal delay-3">
-                <div class="section-kicker">Projects</div>
+            <!-- Projects Section -->
+            <section id="projects" class="section-card">
+                <div class="section-kicker">Featured Projects</div>
                 <div class="section-head">
-                    <h2 class="section-title">Featured systems and supporting proofs.</h2>
+                    <h2 class="section-title">Production systems & engineering proofs.</h2>
                 </div>
                 <div class="project-grid">
+                    <!-- Featured RAG Project -->
                     <article class="project-card featured">
+                        <header>
+                            <div>
+                                <span class="label tech">AI / Vector Retrieval</span>
+                                <h3>Homelab Copilot: Self-Hosted Multimodal RAG</h3>
+                            </div>
+                            <div class="project-meta">Status: Active</div>
+                        </header>
+                        <p>
+                            Built a 100% self-hosted AI assistant indexing scattered homelab markdown notes, Draw.io XML graph topologies,
+                            Excel IP maps, and live Grafana Loki container log streams into a unified hybrid vector search engine.
+                        </p>
+                        <div class="project-specs">
+                            <div class="spec-line">
+                                <strong>Problem</strong>
+                                <span>Searching through 50+ markdown runbooks, spreadsheet IP tables, Draw.io diagrams, and Loki log streams to diagnose container/network failures was slow and fragmented.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Stack</strong>
+                                <span>Qdrant Vector DB, FastEmbed BM25, MiniLM-L6-v2, Cross-Encoder (ms-marco-MiniLM-L-6-v2), Python, Grafana Loki API, openpyxl, zlib.</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Architecture</strong>
+                                <span>Header-aware markdown chunking, base64 XML graph extraction for Draw.io diagrams, dual-tier adaptive Loki log chunking, Qdrant Reciprocal Rank Fusion (RRF), and cross-encoder logit thresholding (-2.0 cutoff).</span>
+                            </div>
+                            <div class="spec-line">
+                                <strong>Impact</strong>
+                                <span>Achieved 100% Hit@1 accuracy and 1.0 MRR on a 17-item homelab test suite with sub-700ms retrieval and zero cloud data leakage.</span>
+                            </div>
+                        </div>
+                        <div class="card-links">
+                            <a href="https://github.com/AcidBurn18/homeserver_public/tree/main/homelab-rag" target="_blank" rel="noreferrer">GitHub Code</a>
+                            <a href="https://teckdebate.medium.com/building-my-own-homelab-copilot-multimodal-chunking-hybrid-embeddings-and-qdrant-rrf-fusion-b45bd6df331b" target="_blank" rel="noreferrer">Deep-Dive Article</a>
+                        </div>
+                    </article>
+
+                    <!-- Featured Networking Project -->
+                    <article class="project-card">
                         <header>
                             <div>
                                 <span class="label">Networking</span>
@@ -1042,7 +1017,7 @@
                         <div class="project-specs">
                             <div class="spec-line">
                                 <strong>Problem</strong>
-                                <span>A flat network mixes management, IoT, cameras, and servers into one broadcast domain and blast radius.</span>
+                                <span>A flat network mixes management, IoT, security cameras, and servers into one broadcast domain and blast radius.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Stack</strong>
@@ -1050,369 +1025,361 @@
                             </div>
                             <div class="spec-line">
                                 <strong>Architecture</strong>
-                                <span>Six VLANs (management, trusted/user, servers, cameras/NVR, IoT/HA, guest); native VLAN set on the trunk port so a downstream non-VLAN-aware AP still gets correct untagged traffic and DHCP over a single-cable run.</span>
+                                <span>Six isolated VLANs (management, trusted, servers, cameras/NVR, IoT, guest); native VLAN trunking allows non-VLAN APs to deliver untagged traffic cleanly.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Impact</strong>
-                                <span>Cameras, IoT, and servers now sit in separate failure and trust domains instead of one shared subnet.</span>
+                                <span>Cameras, IoT devices, and core servers sit in strict trust domains with explicit inter-VLAN firewall rules.</span>
                             </div>
                         </div>
                         <div class="card-links">
-                            <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub</a>
+                            <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub Repo</a>
                         </div>
                     </article>
 
-                    <article class="project-card featured">
+                    <!-- Featured Edge Media Project -->
+                    <article class="project-card">
                         <header>
                             <div>
-                                <span class="label">Edge / media</span>
+                                <span class="label">Edge AI / Media</span>
                                 <h3>Frigate NVR on Constrained Hardware</h3>
                             </div>
                             <div class="project-meta">Status: Active</div>
                         </header>
-                        <p>Tuned a 6-camera (targeting 10) Frigate NVR deployment to run reliably on a repurposed consumer laptop.</p>
+                        <p>Tuned a multi-camera Frigate NVR deployment to run real-time object detection on a repurposed consumer laptop GPU.</p>
                         <div class="project-specs">
                             <div class="spec-line">
                                 <strong>Problem</strong>
-                                <span>Real-time object detection across multiple camera streams pushes a repurposed laptop GPU and CPU close to their limits.</span>
+                                <span>Real-time object detection across 6+ camera streams overwhelms consumer CPU/GPU hardware without stream tuning.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Stack</strong>
-                                <span>Frigate 0.17, ONNX/GPU detector, go2rtc, ffmpeg, Acer Aspire 7 (GTX 1650 4GB, Ryzen 5 3550H).</span>
+                                <span>Frigate NVR, ONNX/GPU detector, go2rtc, ffmpeg, Acer Aspire 7 (GTX 1650 4GB, Ryzen 5).</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Architecture</strong>
-                                <span>Dual go2rtc streams per camera (full-res record, low-res detect at 640x360/5fps) to cut decode load; fixed detector/ffmpeg config to actually use the GPU; tuned face-recognition thresholds and zone-based alert logic.</span>
+                                <span>Dual go2rtc streams per camera (high-res record, low-res detect at 640x360 5fps); hardware-accelerated decoding and tuned zone alert rules.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Impact</strong>
-                                <span>Stable multi-camera detection and identity-aware alerting on hardware never meant for an NVR workload.</span>
+                                <span>Stable multi-camera real-time detection and identity-aware alerting on budget hardware.</span>
                             </div>
                         </div>
                         <div class="card-links">
-                            <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub</a>
+                            <a href="https://github.com/AcidBurn18/homeserver_public" target="_blank" rel="noreferrer">GitHub Repo</a>
                         </div>
                     </article>
 
-                    <article class="project-card featured">
+                    <!-- Cloud Infrastructure Project -->
+                    <article class="project-card">
                         <header>
                             <div>
-                                <span class="label">Cloud infrastructure</span>
+                                <span class="label">Cloud Platform</span>
                                 <h3>Azure Landing Zone Foundations</h3>
                             </div>
                             <div class="project-meta">Status: Supporting</div>
                         </header>
-                        <p>A public-safe Azure example for platform thinking without overclaiming finished code.</p>
+                        <p>Module-driven Azure platform example demonstrating IaC structure, peering, and landing zone principles.</p>
                         <div class="project-specs">
                             <div class="spec-line">
                                 <strong>Problem</strong>
-                                <span>Present landing zone thinking without pretending the repository is a finished enterprise rollout.</span>
+                                <span>Demonstrate enterprise cloud landing zone architecture in clean, public-safe Terraform code.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Stack</strong>
-                                <span>Azure, Terraform, reusable modules, architecture documentation, platform composition.</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Architecture</strong>
-                                <span>Module-driven foundation and documented boundaries, treated as supporting evidence rather than the center of the portfolio.</span>
+                                <span>Azure, Terraform, reusable modules, VNet peering, architecture docs.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Impact</strong>
-                                <span>Shows cloud design judgment while the homelab story carries the strongest proof.</span>
+                                <span>Provides a clean reference implementation for repeatable Azure cloud foundations.</span>
                             </div>
                         </div>
                         <div class="card-links">
-                            <a href="https://github.com/AcidBurn18/devops-case-study" target="_blank" rel="noreferrer">GitHub</a>
-                            <a href="https://teckdebate.medium.com/cross-peering-power-terraform-azurermrm-unleashed-62a9839f45fd" target="_blank" rel="noreferrer">Medium</a>
+                            <a href="https://github.com/AcidBurn18/devops-case-study" target="_blank" rel="noreferrer">GitHub Repo</a>
+                            <a href="https://teckdebate.medium.com/cross-peering-power-terraform-azurermrm-unleashed-62a9839f45fd" target="_blank" rel="noreferrer">Medium Article</a>
                         </div>
                     </article>
 
+                    <!-- AI Coding Pipeline Project -->
                     <article class="project-card">
                         <header>
                             <div>
-                                <span class="label">Developer tooling</span>
-                                <h3>Local + Remote AI Coding Pipeline</h3>
+                                <span class="label tech">Developer Tooling</span>
+                                <h3>Hybrid Local + Remote AI Pipeline</h3>
                             </div>
                             <div class="project-meta">Status: Active</div>
                         </header>
-                        <p>A hybrid local/remote LLM coding setup built to work across large multi-repo JS/TS/Python codebases.</p>
+                        <p>Hybrid local/remote LLM coding setup built to operate smoothly across large multi-repository codebases.</p>
                         <div class="project-specs">
                             <div class="spec-line">
                                 <strong>Problem</strong>
-                                <span>A single model or provider isn't reliable enough for daily coding work across memory limits, rate limits, and repo size.</span>
+                                <span>Single AI providers hit memory limits, context bottlenecks, or rate limits during multi-file coding sessions.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Stack</strong>
-                                <span>mlx-lm on Apple Silicon, GitNexus (MCP), Continue.dev, Aider, Repomix, Groq/Qwen3-32B and OpenRouter as remote fallbacks.</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Architecture</strong>
-                                <span>Local Qwen 2.5 Coder 14B alongside GitHub Copilot with mid-session switching from the same codebase state; custom prompt-refinement agents run ahead of API calls after 14B OOM crashes forced a pivot to free remote APIs.</span>
+                                <span>mlx-lm (Apple Silicon), GitNexus (MCP), Aider, Continue.dev, Qwen 2.5 Coder 14B, Groq/OpenRouter fallbacks.</span>
                             </div>
                             <div class="spec-line">
                                 <strong>Impact</strong>
-                                <span>A coding workflow that keeps working whether the model is local, rate-limited, or swapped out mid-task.</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <header>
-                            <div>
-                                <span class="label">Security / automation</span>
-                                <h3>Security Control Document Automation</h3>
-                            </div>
-                            <div class="project-meta">Status: Supporting</div>
-                        </header>
-                        <p>Security doc automation without pretending enterprise maturity.</p>
-                        <div class="project-specs">
-                            <div class="spec-line">
-                                <strong>Problem</strong>
-                                <span>Security control documentation is repetitive and easy to desynchronize from the actual cloud environment.</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Stack</strong>
-                                <span>Azure AI Foundry, security documents, cloud service documentation workflows.</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Architecture</strong>
-                                <span>Document generation / support tooling that reduces the manual burden of writing security collateral.</span>
-                            </div>
-                            <div class="spec-line">
-                                <strong>Impact</strong>
-                                <span>Signals governance awareness and automation discipline in a compact format.</span>
+                                <span>Resilient coding workflow with automated prompt-refinement agents and seamless mid-session model switching.</span>
                             </div>
                         </div>
                         <div class="card-links">
-                            <a href="https://github.com/AcidBurn18/scd-agent" target="_blank" rel="noreferrer">GitHub</a>
+                            <a href="https://github.com/AcidBurn18" target="_blank" rel="noreferrer">GitHub Profile</a>
                         </div>
                     </article>
                 </div>
             </section>
 
-            <section id="skills" class="section-card reveal delay-4">
-                <div class="section-kicker">Skills</div>
+            <!-- Writing Section -->
+            <section id="writing" class="section-card">
+                <div class="section-kicker">Technical Articles</div>
                 <div class="section-head">
-                    <h2 class="section-title">Grouped by capability, not badge wall.</h2>
+                    <h2 class="section-title">Curated engineering writeups from Medium.</h2>
+                </div>
+
+                <!-- Group 1: Networking -->
+                <div class="writing-group">
+                    <h3 class="sub-title">Networking & Ingress</h3>
+                    <div class="article-grid">
+                        <article class="article-card">
+                            <header>
+                                <span class="label">Remote Access / Tailscale</span>
+                                <h3>Connecting Remote IP Cameras to Frigate via Tailscale: A Network Guide</h3>
+                                <div class="article-meta">02 Oct 2026 · ~8 min read</div>
+                            </header>
+                            <p>
+                                Debugging asymmetric routing, same-LAN gateway bypass, and TCP handshake failures across site-to-site Tailscale subnet routers using OPNsense Outbound NAT.
+                            </p>
+                            <div class="card-links">
+                                <a href="https://teckdebate.medium.com/connecting-remote-ip-cameras-to-frigate-via-tailscale-a-network-guide-8ef944d425f4" target="_blank" rel="noreferrer">Read Article on Medium</a>
+                            </div>
+                        </article>
+
+                        <article class="article-card">
+                            <header>
+                                <span class="label">Ingress / Reverse Proxy</span>
+                                <h3>Traefik Done Properly in a Homelab: Nextcloud, Home Assistant Reverse Proxy</h3>
+                                <div class="article-meta">30 May 2026 · ~7 min read</div>
+                            </header>
+                            <p>
+                                How I think about ingress routing, automatic SSL certificates, and keeping a self-hosted platform clean without turning it into a brittle snowflake.
+                            </p>
+                            <div class="card-links">
+                                <a href="https://teckdebate.medium.com/traefik-done-properly-in-a-homelab-nextcloud-home-assistant-reverse-porxy-e41bafbbbcb9" target="_blank" rel="noreferrer">Read Article on Medium</a>
+                            </div>
+                        </article>
+
+                        <article class="article-card">
+                            <header>
+                                <span class="label">Platform / Networking</span>
+                                <h3>Tailscale on Proxmox: Solving the “UDP GRO Forwarding” Warning</h3>
+                                <div class="article-meta">24 Jan 2026 · ~5 min read</div>
+                            </header>
+                            <p>
+                                A focused writeup on resolving host-level UDP GRO offloading bottlenecks on Proxmox VE hypervisors.
+                            </p>
+                            <div class="card-links">
+                                <a href="https://teckdebate.medium.com/tailscale-on-proxmox-solving-the-udp-gro-forwarding-warning-765f56771509" target="_blank" rel="noreferrer">Read Article on Medium</a>
+                            </div>
+                        </article>
+
+                        <article class="article-card">
+                            <header>
+                                <span class="label">DNS / Infrastructure</span>
+                                <h3>Setting Up Unbound On Raspberry Pi for Secure DNS Resolution</h3>
+                                <div class="article-meta">08 Jan 2025 · ~5 min read</div>
+                            </header>
+                            <p>
+                                DNS as core infrastructure: setting up recursive resolution, DNSSEC validation, and query privacy.
+                            </p>
+                            <div class="card-links">
+                                <a href="https://teckdebate.medium.com/setting-up-unbound-raspberry-pi-for-secure-dns-resolution-01d320411bc5" target="_blank" rel="noreferrer">Read Article on Medium</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Group 2: AI & RAG -->
+                <div class="writing-group">
+                    <h3 class="sub-title">AI & Vector Systems</h3>
+                    <div class="article-grid">
+                        <article class="article-card">
+                            <header>
+                                <span class="label tech">AI / Multimodal RAG</span>
+                                <h3>Building My Own Homelab Copilot: Multimodal Chunking, Hybrid Embeddings, and Qdrant RRF Fusion</h3>
+                                <div class="article-meta">16 Sep 2026 · ~9 min read</div>
+                            </header>
+                            <p>
+                                Deep dive into engineering custom chunkers (Markdown, Excel, Draw.io XML, Loki logs), dense + sparse hybrid vector search, Qdrant RRF fusion, and cross-encoder reranking for private infrastructure.
+                            </p>
+                            <div class="card-links">
+                                <a href="https://teckdebate.medium.com/building-my-own-homelab-copilot-multimodal-chunking-hybrid-embeddings-and-qdrant-rrf-fusion-b45bd6df331b" target="_blank" rel="noreferrer">Read Article on Medium</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Group 3: Automation -->
+                <div class="writing-group">
+                    <h3 class="sub-title">Automation & CI/CD</h3>
+                    <div class="article-grid">
+                        <article class="article-card">
+                            <header>
+                                <span class="label">Automation</span>
+                                <h3>Build a Self-Updating Media Library: qBittorrent to Jellyfin Automation</h3>
+                                <div class="article-meta">19 Dec 2025 · ~6 min read</div>
+                            </header>
+                            <p>
+                                Connecting download pipeline triggers to media server updates with a focus on low-maintenance automation.
+                            </p>
+                            <div class="card-links">
+                                <a href="https://teckdebate.medium.com/build-a-self-updating-media-library-qbittorrent-to-jellyfin-automation-3978b0d25938" target="_blank" rel="noreferrer">Read Article on Medium</a>
+                            </div>
+                        </article>
+
+                        <article class="article-card">
+                            <header>
+                                <span class="label">CI/CD & Delivery</span>
+                                <h3>Effortless CI/CD Deployment for Homelab Applications Using GitHub Actions</h3>
+                                <div class="article-meta">14 Dec 2024 · ~6 min read</div>
+                            </header>
+                            <p>
+                                Repeatable application delivery automation with clear secrets management and reliable deployment steps.
+                            </p>
+                            <div class="card-links">
+                                <a href="https://teckdebate.medium.com/effortless-ci-cd-deployment-for-homelab-applications-using-github-actions-a630b8239aa7" target="_blank" rel="noreferrer">Read Article on Medium</a>
+                            </div>
+                        </article>
+
+                        <article class="article-card">
+                            <header>
+                                <span class="label">IaC / Documentation</span>
+                                <h3>Terraform Docs Tutorial: Generate READMEs for Your Modules</h3>
+                                <div class="article-meta">26 Mar 2024 · ~4 min read</div>
+                            </header>
+                            <p>
+                                Infrastructure code documentation automation: generating clean runbooks and README files directly from module inputs and outputs.
+                            </p>
+                            <div class="card-links">
+                                <a href="https://teckdebate.medium.com/terraform-docs-tutorial-generate-readmes-for-your-modules-412597aa351a" target="_blank" rel="noreferrer">Read Article on Medium</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Group 4: Security -->
+                <div class="writing-group">
+                    <h3 class="sub-title">Security & PKI</h3>
+                    <div class="article-grid">
+                        <article class="article-card">
+                            <header>
+                                <span class="label">Security / Kubernetes</span>
+                                <h3>Secure Your Home Server: Complete Guide to Self-Signed Certificates with Kubernetes</h3>
+                                <div class="article-meta">11 Aug 2024 · ~6 min read</div>
+                            </header>
+                            <p>
+                                Treating internal PKI, trust anchors, and self-signed certificates as proper infrastructure boundaries.
+                            </p>
+                            <div class="card-links">
+                                <a href="https://teckdebate.medium.com/secure-your-home-server-a-complete-guide-to-self-signed-certificates-with-kubernetes-64ba6a08d46e" target="_blank" rel="noreferrer">Read Article on Medium</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills & Certifications Section -->
+            <section id="skills" class="section-card">
+                <div class="section-kicker">Capabilities & Credentials</div>
+                <div class="section-head">
+                    <h2 class="section-title">Skills & Industry Certifications</h2>
                 </div>
                 <div class="skill-groups">
                     <div class="skill-group">
-                        <h3>Cloud</h3>
+                        <h3>Cloud Infrastructure</h3>
                         <div class="pill-row">
                             <span class="pill">Azure</span>
                             <span class="pill">GCP</span>
                             <span class="pill">Landing Zones</span>
-                            <span class="pill">Cloud Foundations</span>
+                            <span class="pill">VNet Peering</span>
                         </div>
                     </div>
+
                     <div class="skill-group">
-                        <h3>Infrastructure as Code</h3>
+                        <h3>IaC & Automation</h3>
                         <div class="pill-row">
                             <span class="pill">Terraform</span>
-                            <span class="pill">Terraform Docs</span>
                             <span class="pill">Ansible</span>
-                            <span class="pill">Markdown Runbooks</span>
+                            <span class="pill">GitHub Actions</span>
+                            <span class="pill">Terraform Docs</span>
                         </div>
                     </div>
+
                     <div class="skill-group">
-                        <h3>Containers</h3>
+                        <h3>Containers & GitOps</h3>
                         <div class="pill-row">
                             <span class="pill">Kubernetes</span>
                             <span class="pill">Docker</span>
                             <span class="pill">Docker Compose</span>
-                            <span class="pill">Container Platforms</span>
+                            <span class="pill">Proxmox VE</span>
                         </div>
                     </div>
+
                     <div class="skill-group">
-                        <h3>GitOps / Delivery</h3>
+                        <h3>Networking & Ingress</h3>
                         <div class="pill-row">
-                            <span class="pill">GitOps</span>
-                            <span class="pill">CI/CD</span>
-                            <span class="pill">Jenkins</span>
-                            <span class="pill">GitHub Actions</span>
-                        </div>
-                    </div>
-                    <div class="skill-group">
-                        <h3>Networking</h3>
-                        <div class="pill-row">
-                            <span class="pill">Traefik</span>
                             <span class="pill">OPNsense</span>
-                            <span class="pill">DNS</span>
+                            <span class="pill">Traefik</span>
                             <span class="pill">Tailscale</span>
-                            <span class="pill">Reverse Proxy</span>
+                            <span class="pill">Unbound DNS</span>
+                            <span class="pill">Outbound NAT</span>
                         </div>
                     </div>
+
                     <div class="skill-group">
-                        <h3>Monitoring</h3>
+                        <h3>AI & Vector Systems</h3>
                         <div class="pill-row">
-                            <span class="pill">Observability</span>
+                            <span class="pill featured-pill">Qdrant Vector DB</span>
+                            <span class="pill featured-pill">Hybrid Search (BM25 + Dense)</span>
+                            <span class="pill featured-pill">RRF Fusion</span>
+                            <span class="pill featured-pill">Cross-Encoders</span>
+                            <span class="pill">Ollama / Local LLMs</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3>Observability & Logs</h3>
+                        <div class="pill-row">
+                            <span class="pill">Grafana Loki</span>
                             <span class="pill">Promtail</span>
-                            <span class="pill">Loki</span>
-                            <span class="pill">Grafana</span>
                             <span class="pill">Prometheus</span>
+                            <span class="pill">Frigate NVR</span>
                         </div>
                     </div>
-                    <div class="skill-group">
-                        <h3>Programming</h3>
-                        <div class="pill-row">
-                            <span class="pill">Python</span>
-                            <span class="pill">Go</span>
-                            <span class="pill">Shell</span>
-                            <span class="pill">Automation Scripts</span>
-                        </div>
-                    </div>
-                    <div class="skill-group">
-                        <h3>Operating Systems</h3>
-                        <div class="pill-row">
-                            <span class="pill">Linux</span>
-                            <span class="pill">Ubuntu</span>
-                            <span class="pill">Proxmox</span>
-                            <span class="pill">NFS / Storage Ops</span>
-                        </div>
+                </div>
+
+                <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line);">
+                    <div class="section-kicker" style="margin-bottom: 10px;">Certifications & Languages</div>
+                    <div class="pill-row" aria-label="Certifications">
+                        <span class="pill featured-pill">Google Cloud Certified Partner Specialist: Gemini Enterprise</span>
+                        <span class="pill featured-pill">Google Cloud Professional DevOps Engineer</span>
+                        <span class="pill featured-pill">Google Cloud Associate Cloud Engineer</span>
+                        <span class="pill featured-pill">Microsoft Azure Administrator Associate (AZ-104)</span>
+                        <span class="pill">IELTS C1 Band</span>
+                        <span class="pill">Goethe German A1</span>
                     </div>
                 </div>
             </section>
 
-            <section id="writing" class="section-card reveal delay-4">
-                <div class="section-kicker">Writing</div>
-                <div class="section-head">
-                    <h2 class="section-title">Curated technical articles from Medium.</h2>
-                </div>
-
-                <div class="writing-group">
-                    <div class="section-head">
-                        <h3 class="section-title" style="font-size:1.25rem">Networking</h3>
-                    </div>
-                    <div class="article-grid">
-                        <article class="article-card">
-                            <header>
-                                <div>
-                                    <span class="label">Ingress / networking</span>
-                                    <h3>Traefik Done Properly in a Homelab: Nextcloud, Home Assistant: Reverse Porxy</h3>
-                                </div>
-                                <div class="article-meta">30 May 2026 · ~7 min</div>
-                            </header>
-                            <p>How I think about ingress, reverse proxying, and keeping a homelab flexible without turning it into a brittle snowflake.</p>
-                            <div class="card-links">
-                                <a href="https://teckdebate.medium.com/traefik-done-properly-in-a-homelab-nextcloud-home-assistant-reverse-porxy-e41bafbbbcb9" target="_blank" rel="noreferrer">Read article</a>
-                            </div>
-                        </article>
-                        <article class="article-card">
-                            <header>
-                                <div>
-                                    <span class="label">Platform / networking</span>
-                                    <h3>Tailscale on Proxmox: Solving the “UDP GRO Forwarding” Warning</h3>
-                                </div>
-                                <div class="article-meta">24 Jan 2026 · ~5 min</div>
-                            </header>
-                            <p>A focused writeup on a real network issue that shows troubleshooting discipline and host-level infrastructure thinking.</p>
-                            <div class="card-links">
-                                <a href="https://teckdebate.medium.com/tailscale-on-proxmox-solving-the-udp-gro-forwarding-warning-765f56771509" target="_blank" rel="noreferrer">Read article</a>
-                            </div>
-                        </article>
-                        <article class="article-card">
-                            <header>
-                                <div>
-                                    <span class="label">DNS / networking</span>
-                                    <h3>Setting Up Unbound On Raspberry Pi for Secure DNS Resolution</h3>
-                                </div>
-                                <div class="article-meta">08 Jan 2025 · ~5 min</div>
-                            </header>
-                            <p>DNS as infrastructure, not a checkbox: recursive resolution, security, and visibility are the point here.</p>
-                            <div class="card-links">
-                                <a href="https://teckdebate.medium.com/setting-up-unbound-raspberry-pi-for-secure-dns-resolution-01d320411bc5" target="_blank" rel="noreferrer">Read article</a>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-
-                <div class="writing-group">
-                    <div class="section-head">
-                        <h3 class="section-title" style="font-size:1.25rem">Automation</h3>
-                    </div>
-                    <div class="article-grid">
-                        <article class="article-card">
-                            <header>
-                                <div>
-                                    <span class="label">Automation / media ops</span>
-                                    <h3>Build a Self-Updating Media Library: qBittorrent to Jellyfin Automation</h3>
-                                </div>
-                                <div class="article-meta">19 Dec 2025 · ~6 min</div>
-                            </header>
-                            <p>Automation that connects download flow to media management, with a practical eye on long-term homelab maintenance.</p>
-                            <div class="card-links">
-                                <a href="https://teckdebate.medium.com/build-a-self-updating-media-library-qbittorrent-to-jellyfin-automation-3978b0d25938" target="_blank" rel="noreferrer">Read article</a>
-                            </div>
-                        </article>
-                        <article class="article-card">
-                            <header>
-                                <div>
-                                    <span class="label">CI/CD</span>
-                                    <h3>Effortless CI/CD Deployment for Homelab Applications Using GitHub Actions</h3>
-                                </div>
-                                <div class="article-meta">14 Dec 2024 · ~6 min</div>
-                            </header>
-                            <p>Shows the pattern I prefer: small, repeatable delivery automation that is easy to debug and hard to misread.</p>
-                            <div class="card-links">
-                                <a href="https://teckdebate.medium.com/effortless-ci-cd-deployment-for-homelab-applications-using-github-actions-a630b8239aa7" target="_blank" rel="noreferrer">Read article</a>
-                            </div>
-                        </article>
-                        <article class="article-card">
-                            <header>
-                                <div>
-                                    <span class="label">Terraform / docs</span>
-                                    <h3>Terraform Docs Tutorial: Generate READMEs for Your Modules</h3>
-                                </div>
-                                <div class="article-meta">26 Mar 2024 · ~4 min</div>
-                            </header>
-                            <p>Infrastructure code should explain itself. This article reinforces the documentation-first delivery style I use in practice.</p>
-                            <div class="card-links">
-                                <a href="https://teckdebate.medium.com/terraform-docs-tutorial-generate-readmes-for-your-modules-412597aa351a" target="_blank" rel="noreferrer">Read article</a>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-
-                <div class="writing-group">
-                    <div class="section-head">
-                        <h3 class="section-title" style="font-size:1.25rem">Security</h3>
-                    </div>
-                    <div class="article-grid">
-                        <article class="article-card">
-                            <header>
-                                <div>
-                                    <span class="label">Security / Kubernetes</span>
-                                    <h3>Secure Your Home Server: A Complete Guide to Self-Signed Certificates with Kubernetes</h3>
-                                </div>
-                                <div class="article-meta">11 Aug 2024 · ~6 min</div>
-                            </header>
-                            <p>Certificates and trust boundaries are treated as infrastructure concerns rather than a one-off setup step.</p>
-                            <div class="card-links">
-                                <a href="https://teckdebate.medium.com/secure-your-home-server-a-complete-guide-to-self-signed-certificates-with-kubernetes-64ba6a08d46e" target="_blank" rel="noreferrer">Read article</a>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <section id="certifications" class="section-card reveal delay-5">
-                <div class="section-kicker">Certifications</div>
-                <div class="pill-row" aria-label="Certifications">
-                    <span class="pill">Microsoft Azure Administrator Associate (AZ-104)</span>
-                    <span class="pill">Google Cloud Professional DevOps Engineer</span>
-                    <span class="pill">Google Cloud Associate Cloud Engineer</span>
-                    <span class="pill">IELTS C1 Band</span>
-                    <span class="pill">Goethe German A1</span>
-                </div>
-            </section>
-
-            <section id="contact" class="section-card reveal delay-5">
+            <!-- Contact Section -->
+            <section id="contact" class="section-card">
                 <div class="section-kicker">Contact</div>
                 <div class="contact-layout">
                     <div class="contact-cta">
-                        <h3>Let’s build reliable infrastructure together.</h3>
+                        <h3>Let’s build reliable infrastructure & AI systems together.</h3>
                         <p>
-                            For roles, collaboration, or technical conversation, use the links below.
+                            Open for engineering roles, technical collaboration, or infrastructure discussions.
                         </p>
                     </div>
                     <div class="contact-grid">
@@ -1430,15 +1397,15 @@
                         </div>
                         <div class="contact-card">
                             <strong>Email</strong>
-                            <span>Available on request / via LinkedIn DM</span>
+                            <span>Available on request / via LinkedIn</span>
                         </div>
                     </div>
                 </div>
             </section>
         </main>
 
-        <footer class="footer reveal delay-5">
-            <p>Ansh Agrawal</p>
+        <footer class="footer">
+            <p>© Ansh Agrawal • Platform & Infrastructure Engineer</p>
         </footer>
     </div>
 </body>
